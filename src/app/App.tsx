@@ -1,11 +1,21 @@
 import './App.css'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Studio from "./routes/studio/Studio.tsx";
+import Studio from "./routes/studio/StudioLayout.tsx";
 import Layout from "./components/layout/Layout.tsx";
 import Schedule from "./routes/schedule/Schedule.tsx";
 import TableauList from "./routes/tableau/list/TableauList.tsx";
 import TableauDetail from "./routes/tableau/detail/TableauDetail.tsx";
 import TableauLayout from "./routes/tableau/TableauLayout.tsx";
+import Dashboard from "./routes/dashboard/Dashboard.tsx";
+import Timeslot from "./routes/timeslot/Timeslot.tsx";
+import RadioShowLayout from "./routes/radioShow/RadioShowLayout.tsx";
+import RadioHostLayout from "./routes/radioHost/RadioHostLayout.tsx";
+import StudioList from "./routes/studio/list/StudioList.tsx";
+import StudioDetail from "./routes/studio/detail/StudioDetail.tsx";
+import RadioShowList from "./routes/radioShow/list/RadioShowList.tsx";
+import RadioShowDetail from "./routes/radioShow/detail/RadioShowDetail.tsx";
+import RadioHostList from "./routes/radioHost/list/RadioHostList.tsx";
+import RadioHostDetail from "./routes/radioHost/detail/RadioHostDetail.tsx";
 
 
 const App = () => {
@@ -15,21 +25,26 @@ const App = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<Layout/>}>
-                        <Route index element={<Schedule/>}/>
-                        <Route path="/studios" element={<Studio/>}/>
-                        <Route path="/hosts" element={<Studio/>}/>
-                        <Route path="/shows" element={<Studio/>}/>
-                        <Route path="/schedules" element={<Studio/>}/>
-
+                        <Route index element={<Dashboard/>}/>
+                        <Route path="/schedules" element={<Schedule/>}/>
                         <Route path="/tableau" element={<TableauLayout/>}>
                             <Route index element={<TableauList/>}/>
                             <Route path=":id" element={<TableauDetail/>}/>
                         </Route>
-
-                        <Route path="/timeslots" element={<Studio/>}/>
+                        <Route path="/timeslots" element={<Timeslot/>}/>
+                        <Route path="/shows" element={<RadioShowLayout/>}>
+                            <Route index element={<RadioShowList/>}/>
+                            <Route path=":id" element={<RadioShowDetail/>}/>
+                        </Route>
+                        <Route path="/hosts" element={<RadioHostLayout/>}>
+                            <Route index element={<RadioHostList/>}/>
+                            <Route path=":id" element={<RadioHostDetail/>}/>
+                        </Route>
+                        <Route path="/studios" element={<Studio/>}>
+                            <Route index element={<StudioList/>}/>
+                            <Route path=":id" element={<StudioDetail/>}/>
+                        </Route>
                     </Route>
-
-
                 </Routes>
             </Router>
         </>

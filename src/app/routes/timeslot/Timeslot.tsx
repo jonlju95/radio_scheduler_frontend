@@ -1,16 +1,15 @@
-import './Dashboard.css';
 
-const Dashboard = () => {
+const Timeslot = () => {
     return (
         <section>
             <div className="headerContainer">
-                <h1>Dashboard</h1>
+                <h1>Timeslot</h1>
             </div>
             <div className="mainContainer">
-                <p>Dashboard content</p>
+                <p>Timeslot content</p>
             </div>
         </section>
     );
 };
 
-export default Dashboard;
+export default Timeslot;

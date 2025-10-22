@@ -2,10 +2,14 @@ import {Outlet} from "react-router-dom";
 
 const TableauLayout = () => {
     return (
-        <div>
-            <h1>Tableau</h1>
-            <Outlet/>
-        </div>
+        <section>
+            <div className="headerContainer">
+                <h1>Tableau</h1>
+            </div>
+            <div className="mainContainer">
+                <Outlet/>
+            </div>
+        </section>
     )
 }
 

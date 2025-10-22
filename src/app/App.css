@@ -1,7 +1,17 @@
 main {
   height: 100vh;
   min-width: calc(100vw - 15rem);
-  margin: 0 0 0 15rem;
-  padding: 2rem;
+  margin-left: 15rem;
+  padding: 4rem;
   overflow-x: hidden;
+}
+
+.headerContainer {
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--text);
+    margin-bottom: 2rem;
+}
+
+.mainContainer {
+    display: flex;
 }

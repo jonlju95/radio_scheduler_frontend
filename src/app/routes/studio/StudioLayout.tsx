@@ -1,16 +1,17 @@
-import './Dashboard.css';
+import {Outlet} from "react-router-dom";
 
-const Dashboard = () => {
+const StudioLayout = () => {
+
     return (
         <section>
             <div className="headerContainer">
-                <h1>Dashboard</h1>
+                <h1>Studios</h1>
             </div>
             <div className="mainContainer">
-                <p>Dashboard content</p>
+                <Outlet/>
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default Dashboard;
+export default StudioLayout;

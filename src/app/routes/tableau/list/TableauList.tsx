@@ -18,19 +18,12 @@ const TableauList = () => {
     useEffect(() => {
         let isMounted = true;
 
-        async function fetchData() {
+        const fetchData = () => {
             try {
-                apiClient.get<Tableau[]>("/tableaus")
+                apiClient.get<Tableau[]>("/tableaux")
                     .then(res => {
                         if (isMounted) {
-                            const parsedData = res.data.map((t) => {
-                                return {
-                                    ...t,
-                                    // @ts-expect-error 123
-                                    date: new Date(t.date.unixTimeMs).toISOString().split("T")[0],
-                                };
-                            });
-                            setTableau(parsedData);
+                            setTableau(res.data);
                         }
                     });
             } catch (err) {
