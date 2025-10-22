@@ -1,0 +1,30 @@
+table, th, td {
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    background-color: #10273b;
+    color: white;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: start;
+}
+
+tbody {
+    tr {
+        &:nth-child(even) {
+            background-color: lightgray;
+        }
+
+        &:hover {
+            background-color: gray;
+            cursor: pointer;
+        }
+    }
+}
