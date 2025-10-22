@@ -16,28 +16,16 @@ const RadioShowList = () => {
         const navigate = useNavigate();
 
         useEffect(() => {
-            let isMounted: boolean = true;
-            getRadioHosts(isMounted).then(() => {
-                isMounted = false;
-            });
-        }, []);
-
-        const getRadioHosts = async (isMounted: boolean) => {
-            try {
+            const getRadioShows = () => {
                 apiClient.get<RadioShow[]>("/radioShows")
                     .then((response) => {
-                        if (isMounted) {
-                            setRadioShows(response.data);
-                        }
+                        setRadioShows(response.data);
+                        setLoading(false);
                     });
-            } catch (error) {
-                console.log(error);
-            } finally {
-                if (isMounted) {
-                    setLoading(false);
-                }
             }
-        }
+            getRadioShows();
+        }, []);
+
 
         if (loading) {
             return <div>Loading...</div>;

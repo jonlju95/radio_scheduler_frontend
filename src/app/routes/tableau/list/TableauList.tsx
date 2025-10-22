@@ -16,30 +16,14 @@ const TableauList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let isMounted = true;
-
-        const fetchData = () => {
-            try {
-                apiClient.get<Tableau[]>("/tableaux")
-                    .then(res => {
-                        if (isMounted) {
-                            setTableau(res.data);
-                        }
-                    });
-            } catch (err) {
-                console.error(err);
-            } finally {
-                if (isMounted) {
+        const getTableaux = () => {
+            apiClient.get<Tableau[]>("/tableaux")
+                .then(res => {
+                    setTableau(res.data);
                     setLoading(false);
-                }
-            }
+                });
         }
-
-        fetchData();
-
-        return () => {
-            isMounted = false;
-        };
+        getTableaux();
     }, []);
 
     if (loading) {
