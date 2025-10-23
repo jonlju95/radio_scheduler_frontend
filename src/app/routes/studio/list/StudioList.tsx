@@ -33,10 +33,10 @@ const StudioList = () => {
     }
 
     return (
-        <section>
+        <div className={"container"}>
             <div className="headerContainer">
                 <h3>Studios</h3>
-                <button onClick={() => navigate(`/studios/new`, {state: {row: {id: "new"}}})}>New studio</button>
+                <button className={"btn btn-primary"} onClick={() => navigate(`/studios/new`, {state: {row: {id: "new"}}})}>New studio</button>
             </div>
             <div className="mainContainer">
                 {studios.length === 0 ? (
@@ -49,7 +49,7 @@ const StudioList = () => {
                     </>
                 )}
             </div>
-        </section>
+        </div>
     );
 }
 

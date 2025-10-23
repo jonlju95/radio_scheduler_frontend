@@ -7,8 +7,8 @@ table {
 }
 
 thead {
-    background-color: var(--primary);
-    color: var(--bg);
+    background-color: var(--color-primary-500);
+    color: var(--color-surface-50);
 }
 
 th, td {

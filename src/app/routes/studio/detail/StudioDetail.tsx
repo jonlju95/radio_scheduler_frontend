@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import type {Studio} from "../../../../models/Studio.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
 import Input from "../../../components/input/Input.tsx";
+import {useDialog} from "../../../../contexts/DialogContext.tsx";
 
 const StudioDetail = () => {
     const {state} = useLocation();
@@ -20,6 +21,8 @@ const StudioDetail = () => {
     const [studio, setStudio] = useState<Studio>(isNew ? emptyStudio : state.row);
     const [originalStudio, setOriginalStudio] = useState<Studio>(isNew ? emptyStudio : state.row);
     const [loading, setLoading] = useState(!isNew);
+
+    const {triggerDialog} = useDialog();
 
     useEffect(() => {
         if (!isNew) {
@@ -49,28 +52,40 @@ const StudioDetail = () => {
             );
 
             if (!hasChanged) {
-                console.log("No changes detected");
+                triggerDialog({
+                    title: "Warning",
+                    message: "No changes detected",
+                    classes: "warning"
+                });
                 return;
             }
         }
-
-        console.log(updatedStudio);
 
         if (isNew) {
             apiClient.post<Studio>(`/studios`, updatedStudio).then(r => {
                 setStudio(r.data);
                 setOriginalStudio(r.data);
+                triggerDialog({
+                    title: "Success",
+                    message: "Studio updated",
+                    classes: "success"
+                });
             });
         } else {
             apiClient.put<Studio>(`/studios/${studio.id}`, updatedStudio).then(r => {
                 setStudio(r.data);
                 setOriginalStudio(r.data);
+                triggerDialog({
+                    title: "Success",
+                    message: "Studio created",
+                    classes: "success"
+                });
             });
         }
     }
 
     return (
-        <section>
+        <div className={"container"}>
             <div className="headerContainer">
                 <h3>{isNew ? "New studio" : studio?.name}</h3>
             </div>
@@ -94,7 +109,7 @@ const StudioDetail = () => {
                     <button type="submit" className={"btn btn-primary"}>Submit</button>
                 </form>
             </div>
-        </section>
+        </div>
     );
 };
 

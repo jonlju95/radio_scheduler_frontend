@@ -6,7 +6,7 @@ const Sidebar = () => {
         <>
             <aside>
                 <div>
-                    <h2>RadioFM</h2>
+                    <h1 className={"sidebarHeader"}>RadioFM</h1>
                 </div>
                 <ul>
                     <li>

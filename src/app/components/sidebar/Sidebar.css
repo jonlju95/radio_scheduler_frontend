@@ -7,11 +7,12 @@ aside {
     flex-direction: column;
     width: 15rem;
     padding: 1.5rem 1rem;
-    background: rgba(0,0,0,.03);
+    background: var(--color-surface-100);
+    border-right: 1px solid var(--color-surface-200);
 }
 
-h2 {
-    color: var(--primary);
+.sidebarHeader {
+    color: var(--color-primary-500);
     margin-bottom: 4rem;
     text-align: center;
 }

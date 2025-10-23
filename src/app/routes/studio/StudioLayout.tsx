@@ -1,9 +1,12 @@
+import "./StudioLayout.css";
 import {Outlet} from "react-router-dom";
 
 const StudioLayout = () => {
 
     return (
-        <Outlet/>
+        <section className={"content"}>
+            <Outlet/>
+        </section>
     )
 }
 

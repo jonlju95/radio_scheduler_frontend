@@ -16,37 +16,40 @@ import RadioShowList from "./routes/radioShow/list/RadioShowList.tsx";
 import RadioShowDetail from "./routes/radioShow/detail/RadioShowDetail.tsx";
 import RadioHostList from "./routes/radioHost/list/RadioHostList.tsx";
 import RadioHostDetail from "./routes/radioHost/detail/RadioHostDetail.tsx";
+import {DialogProvider} from "../contexts/DialogContext.tsx";
 
 
 const App = () => {
 
     return (
         <>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Layout/>}>
-                        <Route index element={<Dashboard/>}/>
-                        <Route path="/schedules" element={<Schedule/>}/>
-                        <Route path="/tableau" element={<TableauLayout/>}>
-                            <Route index element={<TableauList/>}/>
-                            <Route path=":id" element={<TableauDetail/>}/>
+            <DialogProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Layout/>}>
+                            <Route index element={<Dashboard/>}/>
+                            <Route path="/schedules" element={<Schedule/>}/>
+                            <Route path="/tableau" element={<TableauLayout/>}>
+                                <Route index element={<TableauList/>}/>
+                                <Route path=":id" element={<TableauDetail/>}/>
+                            </Route>
+                            <Route path="/timeslots" element={<Timeslot/>}/>
+                            <Route path="/shows" element={<RadioShowLayout/>}>
+                                <Route index element={<RadioShowList/>}/>
+                                <Route path=":id" element={<RadioShowDetail/>}/>
+                            </Route>
+                            <Route path="/hosts" element={<RadioHostLayout/>}>
+                                <Route index element={<RadioHostList/>}/>
+                                <Route path=":id" element={<RadioHostDetail/>}/>
+                            </Route>
+                            <Route path="/studios" element={<Studio/>}>
+                                <Route index element={<StudioList/>}/>
+                                <Route path=":id" element={<StudioDetail/>}/>
+                            </Route>
                         </Route>
-                        <Route path="/timeslots" element={<Timeslot/>}/>
-                        <Route path="/shows" element={<RadioShowLayout/>}>
-                            <Route index element={<RadioShowList/>}/>
-                            <Route path=":id" element={<RadioShowDetail/>}/>
-                        </Route>
-                        <Route path="/hosts" element={<RadioHostLayout/>}>
-                            <Route index element={<RadioHostList/>}/>
-                            <Route path=":id" element={<RadioHostDetail/>}/>
-                        </Route>
-                        <Route path="/studios" element={<Studio/>}>
-                            <Route index element={<StudioList/>}/>
-                            <Route path=":id" element={<StudioDetail/>}/>
-                        </Route>
-                    </Route>
-                </Routes>
-            </Router>
+                    </Routes>
+                </Router>
+            </DialogProvider>
         </>
     )
 }
