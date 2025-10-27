@@ -10,3 +10,10 @@
 .container {
     width: 100%;
 }
+
+svg {
+    height: 1.5rem;
+    transform: rotate(180deg);
+    margin-right: 0.5rem;
+    cursor: pointer;
+}

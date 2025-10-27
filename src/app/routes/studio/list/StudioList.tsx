@@ -5,6 +5,7 @@ import {apiClient} from "../../../../api/apiClient.ts";
 import type {Studio} from "../../../../models/Studio.ts";
 
 const tableHeaders = [
+    {key: "id", label: "Id"},
     {key: "name", label: "Name"},
     {key: "bookingPrice", label: "Booking price"},
     {key: "capacity", label: "Capacity"},

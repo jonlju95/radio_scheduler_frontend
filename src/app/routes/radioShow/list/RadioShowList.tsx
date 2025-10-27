@@ -11,30 +11,37 @@ const tableHeaders = [
 ] as const;
 
 const RadioShowList = () => {
-        const [radioShows, setRadioShows] = useState<RadioShow[]>([]);
-        const [loading, setLoading] = useState(true);
-        const navigate = useNavigate();
+    const [radioShows, setRadioShows] = useState<RadioShow[]>([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-        useEffect(() => {
-            const getRadioShows = () => {
-                apiClient.get<RadioShow[]>("/radioShows")
-                    .then((response) => {
-                        setRadioShows(response.data);
-                        setLoading(false);
-                    });
-            }
-            getRadioShows();
-        }, []);
-
-
-        if (loading) {
-            return <div>Loading...</div>;
+    useEffect(() => {
+        const getRadioShows = () => {
+            apiClient.get<RadioShow[]>("/radioShows")
+                .then((response) => {
+                    setRadioShows(response.data);
+                    setLoading(false);
+                });
         }
+        getRadioShows();
+    }, []);
 
-        return (
-            <>
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className={"container"}>
+            <div className={"headerContainer"}>
+                <h3>Shows</h3>
+                <button className={"btn btn-primary"}
+                        onClick={() => navigate(`/shows/new`, {state: {row: {id: "new"}}})}>New show
+                </button>
+            </div>
+            <div className={"mainContainer"}>
                 {radioShows.length === 0 ? (
-                    <p>No radio shows found</p>
+                    <p>No studios found.</p>
                 ) : (
                     <>
                         <Table headers={tableHeaders} data={radioShows}
@@ -42,9 +49,9 @@ const RadioShowList = () => {
                         <Outlet/>
                     </>
                 )}
-            </>
-        );
-    }
-;
+            </div>
+        </div>
+    );
+};
 
 export default RadioShowList;

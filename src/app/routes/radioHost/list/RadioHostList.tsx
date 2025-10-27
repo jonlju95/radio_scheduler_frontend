@@ -33,17 +33,25 @@ const RadioHostList = () => {
     }
 
     return (
-        <>
-            {radioHosts.length === 0 ? (
-                <p>No studios found.</p>
-            ) : (
-                <>
-                    <Table headers={tableHeaders} data={radioHosts}
-                           onRowClick={(row) => navigate(`/hosts/${row.id}`, {state: {row}})}></Table>
-                    <Outlet/>
-                </>
-            )}
-        </>
+        <div className={"container"}>
+            <div className={"headerContainer"}>
+                <h3>Hosts</h3>
+                <button className={"btn btn-primary"}
+                        onClick={() => navigate(`/hosts/new`, {state: {row: {id: "new"}}})}>New host
+                </button>
+            </div>
+            <div className={"mainContainer"}>
+                {radioHosts.length === 0 ? (
+                    <p>No studios found.</p>
+                ) : (
+                    <>
+                        <Table headers={tableHeaders} data={radioHosts}
+                               onRowClick={(row) => navigate(`/hosts/${row.id}`, {state: {row}})}></Table>
+                        <Outlet/>
+                    </>
+                )}
+            </div>
+        </div>
     );
 };
 

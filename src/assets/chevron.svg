@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 24 24"
+   id="chevron"
+   xmlns="http://www.w3.org/2000/svg">
+  <path
+     d="M 6.1428817,1.0000087 17.857157,12 6.1428817,22.999991"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     fill="none"
+     id="path1"/>
+</svg>

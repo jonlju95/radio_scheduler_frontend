@@ -17,5 +17,9 @@ main {
 
 .mainContainer {
     display: flex;
+}
 
+.detailHeader {
+    display: flex;
+    align-items: center;
 }

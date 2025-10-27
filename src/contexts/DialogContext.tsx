@@ -1,4 +1,4 @@
-import React, {createContext, type ReactNode, useContext, useEffect, useState} from 'react';
+import {createContext, type ReactNode, useContext, useEffect, useState} from 'react';
 import "./DialogContext.css";
 
 type DialogOptions = {
@@ -23,8 +23,10 @@ export const useDialog = () => {
     return context;
 };
 
-export const DialogProvider = ({ children }: { children: ReactNode }) => {
+export const DialogProvider = ({children}: { children: ReactNode }) => {
     const [dialog, setDialog] = useState<DialogOptions | null>(null);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>(null);
 
     const triggerDialog = (options: DialogOptions) => {
@@ -44,9 +46,9 @@ export const DialogProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         return () => clearTimeout(timeoutId);
     }, [timeoutId]);
-    
+
     return (
-        <DialogContext.Provider value={{ triggerDialog, clearDialog }}>
+        <DialogContext.Provider value={{triggerDialog, clearDialog}}>
             {children}
 
             {dialog && (
