@@ -1,14 +1,14 @@
-import Table from "../../../components/table/Table.tsx";
 import {useEffect, useState} from "react";
 import type {Tableau} from "../../../../models/Tableau.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
-import {Outlet, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import DatePicker from "../../../components/datePicker/DatePicker.tsx";
 
-const tableHeaders = [
-    {key: "id", label: "Id"},
-    {key: "date", label: "Date"},
-    {key: "scheduleId", label: "Schedule id"},
-] as const;
+// const tableHeaders = [
+//     {key: "id", label: "Id"},
+//     {key: "date", label: "Date"},
+//     {key: "scheduleId", label: "ScheduleLayout id"},
+// ] as const;
 
 const TableauList = () => {
     const [tableau, setTableau] = useState<Tableau[]>([]);
@@ -26,6 +26,15 @@ const TableauList = () => {
         getTableaux();
     }, []);
 
+    const handleSelect = ((date: Date) => {
+        apiClient.get<Tableau>(`/tableaux/daily`, {date: String(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate())})
+            .then(res => {
+                if (res.data) {
+                    navigate(`/tableau/${res.data.id}`, {state: {row: res.data}});
+                }
+            })
+    })
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -37,11 +46,16 @@ const TableauList = () => {
     }
 
     return (
-        <>
-            <Table headers={tableHeaders} data={tableau}
-                   onRowClick={(row) => navigate(`/tableau/${row.id}`, {state: {row}})}></Table>
-            <Outlet/>
-        </>
+        <div className={"container"}>
+            <div className="headerContainer">
+                <h3>Tableau</h3>
+            </div>
+            <div className="mainContainer">
+                <DatePicker onSelect={(date) => handleSelect(date)}/>
+                {/*<Table headers={tableHeaders} data={tableau}*/}
+                {/*       onRowClick={(row) => navigate(`/tableau/${row.id}`, {state: {row}})}></Table>*/}
+            </div>
+        </div>
     )
 }
 

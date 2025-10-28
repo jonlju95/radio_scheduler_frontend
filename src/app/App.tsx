@@ -1,8 +1,7 @@
 import './App.css'
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Studio from "./routes/studio/StudioLayout.tsx";
 import Layout from "./components/layout/Layout.tsx";
-import Schedule from "./routes/schedule/Schedule.tsx";
 import TableauList from "./routes/tableau/list/TableauList.tsx";
 import TableauDetail from "./routes/tableau/detail/TableauDetail.tsx";
 import TableauLayout from "./routes/tableau/TableauLayout.tsx";
@@ -24,11 +23,10 @@ const App = () => {
     return (
         <>
             <DialogProvider>
-                <Router>
+                <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout/>}>
                             <Route index element={<Dashboard/>}/>
-                            <Route path="/schedules" element={<Schedule/>}/>
                             <Route path="/tableau" element={<TableauLayout/>}>
                                 <Route index element={<TableauList/>}/>
                                 <Route path=":id" element={<TableauDetail/>}/>
@@ -48,7 +46,7 @@ const App = () => {
                             </Route>
                         </Route>
                     </Routes>
-                </Router>
+                </BrowserRouter>
             </DialogProvider>
         </>
     )

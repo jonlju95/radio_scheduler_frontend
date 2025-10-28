@@ -13,16 +13,15 @@ const Sidebar = () => {
                         <NavLink to={"/"} className={({isActive}) => (isActive ? 'active' : '')}>Overview</NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/schedules"}
-                                 className={({isActive}) => (isActive ? 'active' : '')}>Schedules</NavLink>
-                    </li>
-                    <li>
                         <NavLink to={"/tableau"}
                                  className={({isActive}) => (isActive ? 'active' : '')}>Tableau</NavLink>
                     </li>
                     <li>
                         <NavLink to={"/timeslots"}
                                  className={({isActive}) => (isActive ? 'active' : '')}>Timeslot</NavLink>
+                    </li>
+                    <li>
+                        <h4>Admin</h4>
                     </li>
                     <li>
                         <NavLink to={"/shows"} className={({isActive}) => (isActive ? 'active' : '')}>Shows</NavLink>
