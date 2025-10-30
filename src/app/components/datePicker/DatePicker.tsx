@@ -1,11 +1,10 @@
-import './DatePicker.css';
 import {useState} from "react";
 
 type DatePickerProps = {
     onSelect: (date: Date) => void;
 }
 
-enum monthNames {
+const monthNames = [
     "January",
     "February",
     "March",
@@ -18,7 +17,7 @@ enum monthNames {
     "October",
     "November",
     "December"
-}
+]
 
 const getCalendarDays = (year: number, month: number) => {
     const firstDayOfMonth = new Date(year, month, 1);
@@ -60,11 +59,12 @@ const DatePicker = ({onSelect}: DatePickerProps) => {
     }
 
     return (
-        <div className={"datePicker"}>
-            <div className={"dateActions"}>
+        <div className={"flex flex-col gap-3 w-full"}>
+            <div className={"flex justify-between"}>
                 <h4>{selectedMonth.getFullYear()} - {monthNames[selectedMonth.getMonth()]}</h4>
-                <div className={"svgContainer"}>
+                <div className={"flex h-12"}>
                     <svg
+                        className={"rotate-180 me-12 cursor-pointer"}
                         onClick={() => {
                             setSelectedMonth(new Date(year, selectedMonth.getMonth() - 1, selectedMonth.getDate()));
                         }}
@@ -81,6 +81,7 @@ const DatePicker = ({onSelect}: DatePickerProps) => {
                             id="path1"/>
                     </svg>
                     <svg
+                        className={"cursor-pointer"}
                         onClick={() => {
                             setSelectedMonth(new Date(year, selectedMonth.getMonth() + 1, selectedMonth.getDate()));
                         }}
@@ -98,18 +99,22 @@ const DatePicker = ({onSelect}: DatePickerProps) => {
                     </svg>
                 </div>
             </div>
-            <div className={"calendarGrid"}>
+            <div className={"grid grid-cols-7 auto-rows-auto gap-1"}>
                 {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
-                    <div key={day} className={"dayLabel"}>{day}</div>
+                    <div key={day}
+                         className={"h-8 flex items-center justify-center text-primary-500 font-bold mb-4"}>{day}</div>
                 ))}
-
                 {days.map((date) => {
                     const isCurrentMonth = date.getMonth() === month;
                     const isToday =
                         date.toDateString() === new Date().toDateString();
                     return (
                         <div key={date.toISOString()}
-                             className={`dayCell ${isCurrentMonth ? "current" : "other"} ${isToday ? "today" : ""}`}
+                             className={`flex items-center justify-center h-24 aspect-square 
+                             rounded-[3rem] cursor-pointer transition-colors duration-75 
+                             ease-in m-auto ${isCurrentMonth ? "hover:bg-secondary-500" +
+                                 " hover:border hover:border-solid border-secondary-600" : 
+                                 "text-surface-500"} ${isToday ? "border border-solid border-secondary-600 font-semibold" : ""}`}
                              onClick={() => handleSelect(date)}>
                             {date.getDate()}
                         </div>

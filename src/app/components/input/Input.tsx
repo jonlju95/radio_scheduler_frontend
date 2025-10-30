@@ -1,5 +1,4 @@
-import './Input.css';
-import * as React from "react";
+import React from "react";
 
 interface InputProps {
     inputLabel: string,
@@ -20,9 +19,10 @@ const Input: React.FC<InputProps> = ({
 }) => {
 
     return (
-        <label>
+        <label className={"label flex flex-col font-bold text-primary-500 mb-3"}>
             {inputLabel}{required ? '*' : ""}
-            <input type={inputType} name={inputName} value={value ?? ""} onChange={onChange} required={required}/>
+            <input className={"input bg-surface-50-950 text-surface-950-50 font-normal"}
+                type={inputType} name={inputName} value={value ?? ""} onChange={onChange} required={required}/>
         </label>
     );
 };

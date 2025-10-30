@@ -1,8 +1,10 @@
 import Table from "../../../components/table/Table.tsx";
-import {Outlet, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import type {RadioShow} from "../../../../models/RadioShow.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
+import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -27,29 +29,15 @@ const RadioShowList = () => {
     }, []);
 
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div className={"container"}>
-            <div className={"headerContainer"}>
-                <h3>Shows</h3>
-                <button className={"btn btn-primary"}
-                        onClick={() => navigate(`/shows/new`, {state: {row: {id: "new"}}})}>New show
-                </button>
-            </div>
-            <div className={"mainContainer"}>
-                {radioShows.length === 0 ? (
-                    <p>No studios found.</p>
-                ) : (
-                    <>
-                        <Table headers={tableHeaders} data={radioShows}
-                               onRowClick={(row) => navigate(`/shows/${row.id}`, {state: {row}})}></Table>
-                        <Outlet/>
-                    </>
+        <div className={"content"}>
+            <ContentHeader title={"Shows"} navTarget={"/shows/new"} btnLabel={"New show"}/>
+            <ContentBody>
+                {loading ? (<div>Loading...</div>) : (
+                    <Table headers={tableHeaders} data={radioShows}
+                           onRowClick={(row) => navigate(`/shows/${row.id}`, {state: {row}})}></Table>
                 )}
-            </div>
+            </ContentBody>
         </div>
     );
 };

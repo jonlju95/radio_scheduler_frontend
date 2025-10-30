@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
 import type {RadioHost} from "../../../../models/RadioHost.ts";
-import {Outlet, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Table from "../../../components/table/Table.tsx";
 import {apiClient} from "../../../../api/apiClient.ts";
+import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -27,30 +29,15 @@ const RadioHostList = () => {
         getRadioHosts();
     }, []);
 
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div className={"container"}>
-            <div className={"headerContainer"}>
-                <h3>Hosts</h3>
-                <button className={"btn btn-primary"}
-                        onClick={() => navigate(`/hosts/new`, {state: {row: {id: "new"}}})}>New host
-                </button>
-            </div>
-            <div className={"mainContainer"}>
-                {radioHosts.length === 0 ? (
-                    <p>No studios found.</p>
-                ) : (
-                    <>
-                        <Table headers={tableHeaders} data={radioHosts}
-                               onRowClick={(row) => navigate(`/hosts/${row.id}`, {state: {row}})}></Table>
-                        <Outlet/>
-                    </>
+        <div className={"content"}>
+            <ContentHeader title={"Hosts"} navTarget={"/hosts/new"} btnLabel={"New host"}/>
+            <ContentBody>
+                {loading ? (<div>Loading...</div>) : (
+                    <Table headers={tableHeaders} data={radioHosts}
+                           onRowClick={(row) => navigate(`/hosts/${row.id}`, {state: {row}})}></Table>
                 )}
-            </div>
+            </ContentBody>
         </div>
     );
 };

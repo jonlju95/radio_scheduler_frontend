@@ -1,4 +1,3 @@
-import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Studio from "./routes/studio/StudioLayout.tsx";
 import Layout from "./components/layout/Layout.tsx";

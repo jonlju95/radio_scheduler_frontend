@@ -3,12 +3,8 @@ import type {Tableau} from "../../../../models/Tableau.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
 import {useNavigate} from "react-router-dom";
 import DatePicker from "../../../components/datePicker/DatePicker.tsx";
-
-// const tableHeaders = [
-//     {key: "id", label: "Id"},
-//     {key: "date", label: "Date"},
-//     {key: "scheduleId", label: "ScheduleLayout id"},
-// ] as const;
+import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 
 const TableauList = () => {
     const [tableau, setTableau] = useState<Tableau[]>([]);
@@ -46,15 +42,11 @@ const TableauList = () => {
     }
 
     return (
-        <div className={"container"}>
-            <div className="headerContainer">
-                <h3>Tableau</h3>
-            </div>
-            <div className="mainContainer">
+        <div className={"content"}>
+            <ContentHeader title={"Tableau"}/>
+            <ContentBody>
                 <DatePicker onSelect={(date) => handleSelect(date)}/>
-                {/*<Table headers={tableHeaders} data={tableau}*/}
-                {/*       onRowClick={(row) => navigate(`/tableau/${row.id}`, {state: {row}})}></Table>*/}
-            </div>
+            </ContentBody>
         </div>
     )
 }

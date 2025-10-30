@@ -1,13 +1,15 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import type {RadioShow} from "../../../../models/RadioShow.ts";
 import {useEffect, useState} from "react";
 import {useDialog} from "../../../../contexts/DialogContext.tsx";
 import {apiClient} from "../../../../api/apiClient.ts";
 import Input from "../../../components/input/Input.tsx";
+import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../components/contentBody/ContentBody.tsx";
+import Button from "../../../components/button/Button.tsx";
 
 const RadioShowDetail = () => {
     const {state} = useLocation();
-    const navigate = useNavigate();
     const isNew = state.row.id === "new";
 
     const emptyShow: RadioShow = {
@@ -78,36 +80,16 @@ const RadioShowDetail = () => {
         }
     }
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div className={"container"}>
-            <div className="headerContainer">
-                <div className={"detailHeader"}>
-                    <svg
-                        onClick={() => navigate(-1)}
-                        viewBox="-4 -4 32 32"
-                        id="chevron"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M 6.1428817,1.0000087 17.857157,12 6.1428817,22.999991"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                            id="path1"/>
-                    </svg>
-                    <h3>{isNew ? "New show" : show?.title}</h3></div>
-            </div>
-            <div className="mainContainer">
-                <form onSubmit={e => {
-                    e.preventDefault();
-                    saveShow(new FormData(e.currentTarget))
-                }}>
-                    <div>
+        <div className={"content"}>
+            <ContentHeader title={`${isNew ? "New show" : show?.title}`}
+                           detailPage={true}/>
+            <ContentBody>
+                {loading ? (<div>Loading...</div>) : (
+                    <form onSubmit={e => {
+                        e.preventDefault();
+                        saveShow(new FormData(e.currentTarget))
+                    }}>
                         <Input inputLabel={"Title"} inputType={"text"} inputName={"title"}
                                value={show?.title}
                                onChange={(e) => {
@@ -118,10 +100,10 @@ const RadioShowDetail = () => {
                                onChange={(e) => {
                                    setShow({...show, durationMin: Number(e.target.value)})
                                }} required/>
-                    </div>
-                    <button type="submit" className={"btn btn-primary"}>Submit</button>
-                </form>
-            </div>
+                        <Button btnLabel={"Submit"} btnType="submit" btnClasses={["btn-primary"]}/>
+                    </form>
+                )}
+            </ContentBody>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import {Outlet} from "react-router-dom";
 
 const TableauLayout = () => {
     return (
-        <section className={"content"}>
+        <section className={"container h-100"}>
             <Outlet/>
         </section>
     )

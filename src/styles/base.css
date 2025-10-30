@@ -1,0 +1,40 @@
+@import "tailwindcss/preflight" layer(base);
+@layer base {
+    h1 {
+        @apply h1;
+    }
+
+    h2 {
+        @apply h2;
+    }
+
+    h3 {
+        @apply h3;
+    }
+
+    h4 {
+        @apply h4;
+    }
+
+    h5 {
+        @apply h5;
+    }
+
+    h6 {
+        @apply h6;
+    }
+
+    button {
+        &.btn-primary {
+            @apply bg-primary-500 text-surface-50-950;
+
+            &:hover {
+                @apply bg-primary-400-600;
+            }
+        }
+    }
+
+    .content {
+        @apply flex flex-col bg-surface-100-900 h-fit min-h-full rounded-xl p-8 shadow-lg border border-surface-200-800;
+    }
+}
