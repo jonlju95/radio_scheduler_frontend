@@ -1,27 +1,6 @@
-import {createContext, type ReactNode, useContext, useEffect, useState} from 'react';
+import {type ReactNode, useEffect, useState} from 'react';
 import "./DialogContext.css";
-
-type DialogOptions = {
-    title: string;
-    message: string;
-    classes?: string;
-};
-
-type DialogContextType = {
-    triggerDialog: (options: DialogOptions) => void;
-    clearDialog: () => void;
-}
-
-const DialogContext = createContext<DialogContextType | undefined>(undefined);
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useDialog = () => {
-    const context = useContext(DialogContext);
-    if (!context) {
-        throw new Error('useDialog must be used within DialogContext');
-    }
-    return context;
-};
+import {DialogContext, type DialogOptions} from "./UseDialog";
 
 export const DialogProvider = ({children}: { children: ReactNode }) => {
     const [dialog, setDialog] = useState<DialogOptions | null>(null);

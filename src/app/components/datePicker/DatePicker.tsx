@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {HiChevronLeft, HiChevronRight} from "react-icons/hi2";
 
 type DatePickerProps = {
     onSelect: (date: Date) => void;
@@ -63,40 +64,10 @@ const DatePicker = ({onSelect}: DatePickerProps) => {
             <div className={"flex justify-between"}>
                 <h4>{selectedMonth.getFullYear()} - {monthNames[selectedMonth.getMonth()]}</h4>
                 <div className={"flex h-12"}>
-                    <svg
-                        className={"rotate-180 me-12 cursor-pointer"}
-                        onClick={() => {
-                            setSelectedMonth(new Date(year, selectedMonth.getMonth() - 1, selectedMonth.getDate()));
-                        }}
-                        viewBox="-4 -4 32 32"
-                        id="chevron"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M 6.1428817,1.0000087 17.857157,12 6.1428817,22.999991"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                            id="path1"/>
-                    </svg>
-                    <svg
-                        className={"cursor-pointer"}
-                        onClick={() => {
-                            setSelectedMonth(new Date(year, selectedMonth.getMonth() + 1, selectedMonth.getDate()));
-                        }}
-                        viewBox="-4 -4 32 32"
-                        id="chevron"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M 6.1428817,1.0000087 17.857157,12 6.1428817,22.999991"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                            id="path1"/>
-                    </svg>
+                    <HiChevronLeft className={"me-12 cursor-pointer h-full w-full"}
+                                   onClick={() => setSelectedMonth(new Date(year, selectedMonth.getMonth() - 1, selectedMonth.getDate()))}/>
+                    <HiChevronRight className={"cursor-pointer h-full w-full"}
+                                    onClick={() => setSelectedMonth(new Date(year, selectedMonth.getMonth() + 1, selectedMonth.getDate()))}/>
                 </div>
             </div>
             <div className={"grid grid-cols-7 auto-rows-auto gap-1"}>
@@ -113,7 +84,7 @@ const DatePicker = ({onSelect}: DatePickerProps) => {
                              className={`flex items-center justify-center h-24 aspect-square 
                              rounded-[3rem] cursor-pointer transition-colors duration-75 
                              ease-in m-auto ${isCurrentMonth ? "hover:bg-secondary-500" +
-                                 " hover:border hover:border-solid border-secondary-600" : 
+                                 " hover:border hover:border-solid border-secondary-600" :
                                  "text-surface-500"} ${isToday ? "border border-solid border-secondary-600 font-semibold" : ""}`}
                              onClick={() => handleSelect(date)}>
                             {date.getDate()}

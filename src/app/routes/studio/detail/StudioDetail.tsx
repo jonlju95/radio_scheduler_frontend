@@ -3,10 +3,10 @@ import {useLocation} from "react-router-dom";
 import type {Studio} from "../../../../models/Studio.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
 import Input from "../../../components/input/Input.tsx";
-import {useDialog} from "../../../../contexts/DialogContext.tsx";
 import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
 import Button from "../../../components/button/Button.tsx";
 import ContentBody from "../../../components/contentBody/ContentBody.tsx";
+import {useDialog} from "../../../../contexts/UseDialog.tsx";
 
 const StudioDetail = () => {
     const {state} = useLocation();

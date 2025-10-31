@@ -5,7 +5,7 @@ const Layout = () => {
     return (
         <>
             <Sidebar/>
-            <main className={"h-[100vh] min-w-[calc(100vw - 15rem)] ml-60 p-16 overflow-x-hidden"}>
+            <main className={"min-w-[calc(100vw-15rem)] h-[100vh] ml-60 p-16 overflow-x-hidden"}>
                 <Outlet/>
             </main>
         </>

@@ -1,7 +1,9 @@
+import type {ReactNode} from "react";
+
 const Button = ({btnLabel, btnType, btnClasses, onClickAction}: {
-    btnLabel?: string;
+    btnLabel?: string | ReactNode;
     btnType?: 'button' | 'submit';
-    btnClasses: string[];
+    btnClasses?: string[];
     onClickAction?: () => void;
 }) => {
     return (

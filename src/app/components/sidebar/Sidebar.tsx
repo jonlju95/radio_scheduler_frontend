@@ -1,14 +1,15 @@
 import {NavLink} from "react-router-dom";
 import {Fragment} from "react";
+import {HiCalendar, HiClock, HiCube, HiHome, HiMicrophone, HiUser} from "react-icons/hi2";
 
 const Sidebar = () => {
     const links = [
-        {target: "/", title: "Overview"},
-        {target: "/tableau", title: "Tableau"},
-        {target: "/timeslots", title: "Timeslot"},
-        {target: "/shows", title: "Shows"},
-        {target: "/hosts", title: "Hosts"},
-        {target: "/studios", title: "Studios"},
+        {target: "/", title: "Overview", icon: <HiHome className={"me-4 text-tertiary-500"}/>},
+        {target: "/tableau", title: "Tableau", icon: <HiCalendar className={"me-4 text-tertiary-500"}/>},
+        {target: "/timeslots", title: "Timeslot", icon: <HiClock className={"me-4 text-tertiary-500"}/>},
+        {target: "/shows", title: "Shows", icon: <HiMicrophone className={"me-4 text-tertiary-500"}/>},
+        {target: "/hosts", title: "Hosts", icon: <HiUser className={"me-4 text-tertiary-500"}/>},
+        {target: "/studios", title: "Studios", icon: <HiCube className={"me-4 text-tertiary-500"}/>},
     ]
 
     return (
@@ -28,7 +29,7 @@ const Sidebar = () => {
                                 )}
                                 <li className={"mb-4"}>
                                     <NavLink to={link.target}
-                                             className={`inline-block p-4 h-full w-full rounded-xl [&.active]:bg-surface-200 hover:bg-surface-200`}>{link.title}</NavLink>
+                                             className={`flex items-center p-4 h-full w-full rounded-xl [&.active]:bg-surface-200 hover:bg-surface-200`}>{link.icon}{link.title}</NavLink>
                                 </li>
                             </Fragment>
                         )

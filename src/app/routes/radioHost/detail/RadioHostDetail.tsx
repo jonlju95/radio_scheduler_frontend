@@ -1,13 +1,13 @@
 import {useLocation} from "react-router-dom";
 import type {RadioHost} from "../../../../models/RadioHost.ts";
 import {useEffect, useState} from "react";
-import {useDialog} from "../../../../contexts/DialogContext.tsx";
 import {apiClient} from "../../../../api/apiClient.ts";
 import Input from "../../../components/input/Input.tsx";
 import ToggleInput from "../../../components/toggleInput/ToggleInput.tsx";
 import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
 import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 import Button from "../../../components/button/Button.tsx";
+import {useDialog} from "../../../../contexts/UseDialog.tsx";
 
 const RadioHostDetail = () => {
     const {state} = useLocation();
