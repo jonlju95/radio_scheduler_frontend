@@ -2,8 +2,8 @@ import {useLocation} from "react-router-dom";
 import type {RadioHost} from "../../../../models/RadioHost.ts";
 import {useEffect, useState} from "react";
 import {apiClient} from "../../../../api/apiClient.ts";
-import Input from "../../../components/input/Input.tsx";
-import ToggleInput from "../../../components/toggleInput/ToggleInput.tsx";
+import InputField from "../../../components/InputField.tsx";
+import ToggleField from "../../../components/ToggleField.tsx";
 import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
 import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 import Button from "../../../components/button/Button.tsx";
@@ -94,17 +94,17 @@ const RadioHostDetail = () => {
                         saveHost(new FormData(e.currentTarget))
                     }}>
                         <div>
-                            <Input inputLabel={"First name"} inputType={"text"} inputName={"firstName"}
-                                   value={host?.firstName}
-                                   onChange={(e) => {
+                            <InputField inputLabel={"First name"} inputType={"text"} inputName={"firstName"}
+                                        value={host?.firstName}
+                                        onChange={(e) => {
                                        setHost({...host, firstName: e.target.value})
                                    }} required/>
-                            <Input inputLabel={"Last name"} inputType={"text"} inputName={"lastName"}
-                                   value={host?.lastName}
-                                   onChange={(e) => {
+                            <InputField inputLabel={"Last name"} inputType={"text"} inputName={"lastName"}
+                                        value={host?.lastName}
+                                        onChange={(e) => {
                                        setHost({...host, lastName: e.target.value})
                                    }} required/>
-                            <ToggleInput inputLabel={"Is guest"} inputName={"isGuest"}
+                            <ToggleField inputLabel={"Is guest"} inputName={"isGuest"}
                                          checked={host?.isGuest}
                                          onChange={(e) => {
                                              setHost({...host, isGuest: e.target.checked})

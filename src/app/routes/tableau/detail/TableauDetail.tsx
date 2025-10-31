@@ -56,12 +56,12 @@ const TableauDetail = () => {
                         {/*<ModalContext.Provider value={{showModal, toggleModal}}>*/}
                         {/*    <Modal canShow={showModal} updateModalState={toggleModal}></Modal>*/}
                         {/*</ModalContext.Provider>*/}
-                        {/*<Input inputLabel={"Capacity"} inputType={"text"} inputName={"studioCapacity"}*/}
+                        {/*<InputField inputLabel={"Capacity"} inputType={"text"} inputName={"studioCapacity"}*/}
                         {/*       value={""}*/}
                         {/*       onChange={(e) => {*/}
 
                         {/*       }} required/>*/}
-                        {/*<Dropdown dropdownLabel={"Host"} options={options} onChange={(() => {})}></Dropdown>*/}
+                        {/*<DropdownField dropdownLabel={"Host"} options={options} onChange={(() => {})}></DropdownField>*/}
                     </div>
                 )}
             </ContentBody>

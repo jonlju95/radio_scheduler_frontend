@@ -1,5 +1,9 @@
 @import "tailwindcss/preflight" layer(base);
 @layer base {
+    body {
+        @apply bg-primary-700-300;
+    }
+
     h1 {
         @apply h1;
     }
@@ -28,7 +32,7 @@
         &.btn-primary {
             @apply bg-primary-500 text-surface-50-950;
 
-            &:hover {
+            &:hover&:not(:disabled) {
                 @apply bg-primary-400-600;
             }
         }

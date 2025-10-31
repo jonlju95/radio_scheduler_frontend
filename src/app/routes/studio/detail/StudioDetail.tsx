@@ -2,11 +2,11 @@ import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import type {Studio} from "../../../../models/Studio.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
-import Input from "../../../components/input/Input.tsx";
 import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
-import Button from "../../../components/button/Button.tsx";
 import ContentBody from "../../../components/contentBody/ContentBody.tsx";
 import {useDialog} from "../../../../contexts/UseDialog.tsx";
+import FormWrapper from "../../../components/FormWrapper.tsx";
+import InputField from "../../../components/InputField.tsx";
 
 const StudioDetail = () => {
     const {state} = useLocation();
@@ -37,12 +37,10 @@ const StudioDetail = () => {
         }
     }, [isNew, studio.id])
 
-    const saveStudio = (formData: FormData) => {
+    const saveStudio = (data: Studio) => {
         const updatedStudio = {
-            id: !isNew ? studio.id : undefined,
-            name: formData.get("studioName") as string,
-            bookingPrice: Number(formData.get("studioPrice")),
-            capacity: Number(formData.get("studioCapacity")),
+            ...data,
+            id: !isNew ? studio.id : undefined
         }
 
         if (!isNew) {
@@ -89,27 +87,11 @@ const StudioDetail = () => {
                            detailPage={true}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
-                    <form onSubmit={e => {
-                        e.preventDefault();
-                        saveStudio(new FormData(e.currentTarget))
-                    }}>
-                        <Input inputLabel={"Name"} inputType={"text"} inputName={"studioName"}
-                               value={studio?.name}
-                               onChange={(e) => {
-                                   setStudio({...studio, name: e.target.value})
-                               }} required/>
-                        <Input inputLabel={"Booking price"} inputType={"text"} inputName={"studioPrice"}
-                               value={studio?.bookingPrice}
-                               onChange={(e) => {
-                                   setStudio({...studio, bookingPrice: Number(e.target.value)})
-                               }} required/>
-                        <Input inputLabel={"Capacity"} inputType={"text"} inputName={"studioCapacity"}
-                               value={studio?.capacity}
-                               onChange={(e) => {
-                                   setStudio({...studio, capacity: Number(e.target.value)})
-                               }} required/>
-                        <Button btnLabel={"Submit"} btnType="submit" btnClasses={["btn-primary"]}/>
-                    </form>
+                    <FormWrapper<Studio> defaultValues={studio} onSubmit={saveStudio}>
+                        <InputField<Studio> name={"name"} label={"Name"} required/>
+                        <InputField<Studio> name={"bookingPrice"} label={"Booking price"} required/>
+                        <InputField<Studio> name={"capacity"} label={"Capacity"} required/>
+                    </FormWrapper>
                 )}
             </ContentBody>
         </div>

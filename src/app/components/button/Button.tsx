@@ -1,15 +1,17 @@
 import type {ReactNode} from "react";
 
-const Button = ({btnLabel, btnType, btnClasses, onClickAction}: {
+const Button = ({btnLabel, btnType, btnClasses, btnDisabled, onClickAction}: {
     btnLabel?: string | ReactNode;
     btnType?: 'button' | 'submit';
     btnClasses?: string[];
+    btnDisabled?: boolean;
     onClickAction?: () => void;
 }) => {
     return (
         <button className={`button ${btnClasses} py-2.5 px-5 rounded-md font-medium`}
                 type={btnType || 'button'}
-                onClick={onClickAction}>
+                onClick={onClickAction}
+                disabled={btnDisabled}>
             {btnLabel}
         </button>
     );

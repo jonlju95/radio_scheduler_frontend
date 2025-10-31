@@ -2,11 +2,11 @@ import {useLocation} from "react-router-dom";
 import type {RadioShow} from "../../../../models/RadioShow.ts";
 import {useEffect, useState} from "react";
 import {apiClient} from "../../../../api/apiClient.ts";
-import Input from "../../../components/input/Input.tsx";
+import InputField from "../../../components/InputField.tsx";
 import ContentHeader from "../../../components/contentHeader/ContentHeader.tsx";
 import ContentBody from "../../../components/contentBody/ContentBody.tsx";
-import Button from "../../../components/button/Button.tsx";
 import {useDialog} from "../../../../contexts/UseDialog.tsx";
+import FormWrapper from "../../../components/FormWrapper.tsx";
 
 const RadioShowDetail = () => {
     const {state} = useLocation();
@@ -35,11 +35,10 @@ const RadioShowDetail = () => {
         }
     }, [isNew, show.id]);
 
-    const saveShow = (formData: FormData) => {
+    const saveShow = (data: RadioShow) => {
         const updatedShow = {
+            ...data,
             id: !isNew ? show.id : undefined,
-            title: formData.get("title") as string,
-            durationMin: Number(formData.get("durationMin")),
         }
 
         if (!isNew) {
@@ -86,22 +85,26 @@ const RadioShowDetail = () => {
                            detailPage={true}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
-                    <form onSubmit={e => {
-                        e.preventDefault();
-                        saveShow(new FormData(e.currentTarget))
-                    }}>
-                        <Input inputLabel={"Title"} inputType={"text"} inputName={"title"}
-                               value={show?.title}
-                               onChange={(e) => {
-                                   setShow({...show, title: e.target.value})
-                               }} required/>
-                        <Input inputLabel={"Duration (min)"} inputType={"number"} inputName={"durationMin"}
-                               value={show?.durationMin}
-                               onChange={(e) => {
-                                   setShow({...show, durationMin: Number(e.target.value)})
-                               }} required/>
-                        <Button btnLabel={"Submit"} btnType="submit" btnClasses={["btn-primary"]}/>
-                    </form>
+                    <FormWrapper defaultValues={show} onSubmit={saveShow}>
+                        <InputField name={"title"} label={"Title"}/>
+                        <InputField name={"durationMin"} label={"Duration (min)"}/>
+                    </FormWrapper>
+                    // <form onSubmit={e => {
+                    //     e.preventDefault();
+                    //     saveShow(new FormData(e.currentTarget))
+                    // }}>
+                    //     <InputField inputLabel={"Title"} inputType={"text"} inputName={"title"}
+                    //                 value={show?.title}
+                    //                 onChange={(e) => {
+                    //                setShow({...show, title: e.target.value})
+                    //            }} required/>
+                    //     <InputField inputLabel={"Duration (min)"} inputType={"number"} inputName={"durationMin"}
+                    //                 value={show?.durationMin}
+                    //                 onChange={(e) => {
+                    //                setShow({...show, durationMin: Number(e.target.value)})
+                    //            }} required/>
+                    //     <Button btnLabel={"Submit"} btnType="submit" btnClasses={["btn-primary"]}/>
+                    // </form>
                 )}
             </ContentBody>
         </div>

@@ -3,7 +3,7 @@ import type {RadioShow} from "../../../models/RadioShow.ts";
 import type {RadioHost} from "../../../models/RadioHost.ts";
 import type {Studio} from "../../../models/Studio.ts";
 import {apiClient} from "../../../api/apiClient.ts";
-import Dropdown, {type Option} from "../dropdown/Dropdown.tsx";
+import DropdownField, {type Option} from "../DropdownField.tsx";
 import Button from "../button/Button.tsx";
 
 const TimeslotModal = ({timeslotId}: {
@@ -53,9 +53,9 @@ const TimeslotModal = ({timeslotId}: {
                 <div className={"w-1/4"}>
                     <div><span>Start time</span></div>
                     <div><span>End time</span></div>
-                    <Dropdown dropdownName={"radioHost"} dropdownLabel={"Host"} options={hosts}/>
-                    <Dropdown dropdownName={"radioShow"} dropdownLabel={"Show"} options={shows}/>
-                    <Dropdown dropdownName={"studio"} dropdownLabel={"Studio"} options={studios}/>
+                    <DropdownField dropdownName={"radioHost"} dropdownLabel={"Host"} options={hosts}/>
+                    <DropdownField dropdownName={"radioShow"} dropdownLabel={"Show"} options={shows}/>
+                    <DropdownField dropdownName={"studio"} dropdownLabel={"Studio"} options={studios}/>
                 </div>
                 <Button btnLabel={"Submit"} btnType="submit" btnClasses={["btn-primary"]}/>
             </form>
