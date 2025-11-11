@@ -1,7 +1,7 @@
 @import "tailwindcss/preflight" layer(base);
 @layer base {
     body {
-        @apply bg-primary-700-300;
+        @apply bg-surface-200-800;
     }
 
     h1 {

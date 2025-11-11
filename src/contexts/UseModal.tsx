@@ -1,8 +1,8 @@
 import {createContext, type ReactNode, useContext} from "react";
 
 type ModalContextType = {
-    openModal: (content: ReactNode) => void;
-    closeModal: () => void;
+    openModal: <T extends object>(content: ReactNode) => Promise<T>;
+    closeModal: <T extends object>(result?: T) => void;
 };
 
 export const ModalContext = createContext<ModalContextType | undefined>(undefined);
