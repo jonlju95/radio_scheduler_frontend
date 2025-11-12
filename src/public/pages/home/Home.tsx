@@ -2,13 +2,17 @@ import Button from "../../../components/button/Button.tsx";
 import PodcastItem from "../../../components/PodcastItem.tsx";
 import NewsItem from "../../../components/NewsItem.tsx";
 import Footer from "../../../components/Footer.tsx";
+import {cn} from "../../../utils/cn.ts";
+
+const heroSectionClasses = ["col-span-full", "flex", "items-center", "min-h-[calc(100vh-4rem)]", "px-32", "mt-16", "bg-cover", "bg-center", "relative"];
+const statisticsSectionClasses = ["flex", "justify-between", "items-center", "bg-primary-900-100", "text-primary-50-950", "rounded-r-xl",
+    "h-48", "w-2/3", "px-32", "absolute", "left-0", "top-[calc(100vh-10rem)]"];
 
 const Home = () => {
     return (
         <>
-            <section className={"col-span-full flex items-center min-h-[calc(100vh-4rem)] px-32 mt-16 bg-cover" +
-                " bg-center relative"}
-                     style={{backgroundImage: "url('/src/assets/heroSectionBg.webp')"}}>
+            <section className={cn(heroSectionClasses)}
+                     style={{backgroundImage: "url('/src/assets/heroSectionBg.webp')", backgroundPosition: "top"}}>
                 <div className={"flex flex-col col-span-6 z-50 text-surface-50"}>
                     <div className={"mb-6"}>
                         <h1>RadioFM</h1>
@@ -19,12 +23,11 @@ const Home = () => {
                             cursus amet ornare feugiat.</p>
                     </div>
                     <div>
-                        <Button btnClasses={"btn-primary text-surface-50"} btnLabel={"Learn more"}/>
+                        <Button intent={"primary"} btnLabel={"Learn more"}/>
                     </div>
                 </div>
                 <div
-                    className={"flex justify-between items-center bg-primary-900-100 text-primary-50-950 rounded-r-xl" +
-                        " h-48 w-2/3 px-32 absolute left-0 top-[calc(100vh-10rem)]"}>
+                    className={cn(statisticsSectionClasses)}>
                     <div>
                         <h2>15M</h2>
                         <p>Current subscribers</p>
@@ -45,16 +48,16 @@ const Home = () => {
                 <div className={"grid grid-cols-3 gap-x-4"}>
                     <PodcastItem title={"Lorem ipsum"}
                                  description={"Lorem ipsum dolor sit amet consectetur. Elit sollicitudin convallis feugiat sagittis gravida integer a eget. Magna aliquam nisl mauris orci in."}
-                    imageSrc={"src/assets/image 4.webp"}
-                    imageAlt={"Podcast image"}/>
+                                 imageSrc={"src/assets/image 4.webp"}
+                                 imageAlt={"Podcast image"}/>
                     <PodcastItem title={"Lorem ipsum"}
                                  description={"Lorem ipsum dolor sit amet consectetur. Nisi cras arcu et pharetra egestas morbi fringilla maecenas pulvinar. Varius mi posuere leo convallis lobortis arcu tristique ac in."}
-                    imageSrc={"src/assets/image 1.webp"}
-                    imageAlt={"Podcast image"}/>
+                                 imageSrc={"src/assets/image 1.webp"}
+                                 imageAlt={"Podcast image"}/>
                     <PodcastItem title={"Lorem ipsum"}
                                  description={"Lorem ipsum dolor sit amet consectetur. Ut est suscipit integer aliquam faucibus amet sagittis dictum. Ornare id tellus nulla lectus orci in feugiat iaculis."}
-                    imageSrc={"src/assets/image 3.webp"}
-                    imageAlt={"Podcast image"}/>
+                                 imageSrc={"src/assets/image 3.webp"}
+                                 imageAlt={"Podcast image"}/>
                 </div>
             </section>
             <section className={"col-span-full px-32 flex flex-col min-h-[calc(100vh-4rem)]" +
@@ -62,20 +65,20 @@ const Home = () => {
                 <h2 className={"mb-6"}>News</h2>
                 <div className={"flex flex-col"}>
                     <NewsItem title={"Lorem ipsum"}
-                                 description={"Lorem ipsum dolor sit amet consectetur. Elit sollicitudin convallis feugiat sagittis gravida integer a eget. Magna aliquam nisl mauris orci in."}
-                    imageSrc={"src/assets/image 4.webp"}
-                    imageAlt={"Podcast image"}/>
+                              description={"Lorem ipsum dolor sit amet consectetur. Elit sollicitudin convallis feugiat sagittis gravida integer a eget. Magna aliquam nisl mauris orci in."}
+                              imageSrc={"src/assets/image 4.webp"}
+                              imageAlt={"Podcast image"}/>
                     <NewsItem title={"Lorem ipsum"}
-                                 description={"Lorem ipsum dolor sit amet consectetur. Nisi cras arcu et pharetra egestas morbi fringilla maecenas pulvinar. Varius mi posuere leo convallis lobortis arcu tristique ac in."}
-                    imageSrc={"src/assets/image 1.webp"}
-                    imageAlt={"Podcast image"}/>
+                              description={"Lorem ipsum dolor sit amet consectetur. Nisi cras arcu et pharetra egestas morbi fringilla maecenas pulvinar. Varius mi posuere leo convallis lobortis arcu tristique ac in."}
+                              imageSrc={"src/assets/image 1.webp"}
+                              imageAlt={"Podcast image"}/>
                     <NewsItem title={"Lorem ipsum"}
-                                 description={"Lorem ipsum dolor sit amet consectetur. Ut est suscipit integer aliquam faucibus amet sagittis dictum. Ornare id tellus nulla lectus orci in feugiat iaculis."}
-                    imageSrc={"src/assets/image 3.webp"}
-                    imageAlt={"Podcast image"}/>
+                              description={"Lorem ipsum dolor sit amet consectetur. Ut est suscipit integer aliquam faucibus amet sagittis dictum. Ornare id tellus nulla lectus orci in feugiat iaculis."}
+                              imageSrc={"src/assets/image 3.webp"}
+                              imageAlt={"Podcast image"}/>
                 </div>
             </section>
-            <Footer />
+            <Footer/>
         </>
     );
 };

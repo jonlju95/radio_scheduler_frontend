@@ -13,16 +13,13 @@ import StudioLayout from "./pages/studio/StudioLayout.tsx";
 import StudioList from "./pages/studio/list/StudioList.tsx";
 import StudioDetail from "./pages/studio/detail/StudioDetail.tsx";
 import Dashboard from "./pages/dashboard/Dashboard.tsx";
+import {mockAuth} from "../auth/mockSessions.ts";
 
 export const privateRoutes: RouteObject = {
     path: "/admin",
     loader: async () => {
-        async function getAdminUser() {
-            return {username: "admin", password: "admin"}
-        }
-
-        const adminUser = await getAdminUser();
-        if (!adminUser) {
+        const adminUser = mockAuth.getCurrentUser();
+        if (!adminUser || adminUser.role !== "admin") {
             throw redirect("/login");
         }
         return adminUser;

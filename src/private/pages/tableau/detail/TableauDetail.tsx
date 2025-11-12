@@ -6,10 +6,8 @@ import ContentHeader from "../../../../components/contentHeader/ContentHeader.ts
 import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
 import Button from "../../../../components/button/Button.tsx";
 import {useModal} from "../../../../contexts/UseModal.tsx";
-import {useDialog} from "../../../../contexts/UseDialog.tsx";
 import TimeslotModal from "../../../../components/modals/TimeslotModal.tsx";
 import type {Timeslot} from "../../../../models/Timeslot.ts";
-import {HiXMark} from "react-icons/hi2";
 
 const TableauDetail = () => {
     const {state} = useLocation();
@@ -22,26 +20,26 @@ const TableauDetail = () => {
     };
 
     const [tableau, setTableau] = useState<Tableau>(isNew ? emptyTableau : state.row);
-    const [originalTableau, setOriginalTableau] = useState<Tableau>(isNew ? emptyTableau : state.row);
+    // const [originalTableau, setOriginalTableau] = useState<Tableau>(isNew ? emptyTableau : state.row);
     const [loading, setLoading] = useState(!isNew);
 
-    const {triggerDialog} = useDialog();
-    const {openModal, closeModal} = useModal();
+    // const {triggerDialog} = useDialog();
+    const {openModal} = useModal();
 
     useEffect(() => {
         if (!isNew) {
             apiClient.get<Tableau>(`/tableaux/${tableau.id}`)
                 .then(response => {
                     setTableau(response.data);
-                    setOriginalTableau(response.data);
+                    // setOriginalTableau(response.data);
                     setLoading(false);
                 });
         }
     }, [isNew, tableau.id]);
 
-    const saveTableau = (data: Tableau) => {
-        console.log(data);
-    };
+    // const saveTableau = (data: Tableau) => {
+    //     console.log(data);
+    // };
 
 
     const triggerModal = () => {
