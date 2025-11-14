@@ -2,11 +2,11 @@ import {useLocation} from "react-router-dom";
 import type {RadioShow} from "../../../../models/RadioShow.ts";
 import {useEffect, useState} from "react";
 import {apiClient} from "../../../../api/apiClient.ts";
-import InputField from "../../../../components/InputField.tsx";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
-import {useDialog} from "../../../../contexts/UseDialog.tsx";
-import FormWrapper from "../../../../components/FormWrapper.tsx";
+import InputField from "../../../../components/shared/InputField.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
+import {useDialog} from "../../../../contexts/dialog/UseDialog.tsx";
+import FormWrapper from "../../../../components/shared/FormWrapper.tsx";
 
 const RadioShowDetail = () => {
     const {state} = useLocation();
@@ -50,7 +50,7 @@ const RadioShowDetail = () => {
                 triggerDialog({
                     title: "Warning",
                     message: "No changes detected",
-                    classes: "warning"
+                    variant: "warning"
                 });
                 return;
             }
@@ -63,7 +63,8 @@ const RadioShowDetail = () => {
                 triggerDialog({
                     title: "Success",
                     message: "Show created",
-                    classes: "success"
+                    variant: "success",
+
                 });
             });
         } else {
@@ -73,7 +74,7 @@ const RadioShowDetail = () => {
                 triggerDialog({
                     title: "Success",
                     message: "Show updated",
-                    classes: "success"
+                    variant: "success"
                 });
             });
         }

@@ -1,7 +1,7 @@
-import Button from "../../../components/button/Button.tsx";
-import PodcastItem from "../../../components/PodcastItem.tsx";
-import NewsItem from "../../../components/NewsItem.tsx";
-import Footer from "../../../components/Footer.tsx";
+import Button from "../../../components/shared/button/Button.tsx";
+import PodcastItem from "../../../components/public/PodcastItem.tsx";
+import NewsItem from "../../../components/public/NewsItem.tsx";
+import Footer from "../../../components/public/Footer.tsx";
 import {cn} from "../../../utils/cn.ts";
 
 const heroSectionClasses = ["col-span-full", "flex", "items-center", "min-h-[calc(100vh-4rem)]", "px-32", "mt-16", "bg-cover", "bg-center", "relative"];

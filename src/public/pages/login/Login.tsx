@@ -1,5 +1,5 @@
-import FormWrapper from "../../../components/FormWrapper.tsx";
-import InputField from "../../../components/InputField.tsx";
+import FormWrapper from "../../../components/shared/FormWrapper.tsx";
+import InputField from "../../../components/shared/InputField.tsx";
 import {useNavigate} from "react-router-dom";
 import {mockAuth} from "../../../auth/mockSessions.ts";
 

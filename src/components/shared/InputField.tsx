@@ -13,7 +13,7 @@ const InputField = <T extends FieldValues>({name, label, type = "text", required
     const error = errors[name]?.message as string | undefined;
 
     return (
-        <><label htmlFor={name} className={"label flex flex-col font-bold text-primary-500 mb-3"}>
+        <><label htmlFor={name} className={"label flex flex-col font-bold text-primary-800-200 mb-3"}>
             {label}{required && '*'}
             <input id={name}
                    type={type}

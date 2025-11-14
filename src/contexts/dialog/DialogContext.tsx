@@ -1,8 +1,10 @@
 import {type ReactNode, useEffect, useState} from 'react';
-import "./DialogContext.css";
-import {DialogContext, type DialogOptions} from "./UseDialog";
+import "../DialogContext.css";
+import {DialogContext, type DialogOptions} from "./UseDialog.tsx";
+import {cn} from "../../utils/cn.ts";
+import {dialogVariants} from "./dialog.styles.ts";
 
-export const DialogProvider = ({children}: { children: ReactNode }) => {
+export const DialogProvider = ({children}: {children: ReactNode}) => {
     const [dialog, setDialog] = useState<DialogOptions | null>(null);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
@@ -31,7 +33,7 @@ export const DialogProvider = ({children}: { children: ReactNode }) => {
             {children}
 
             {dialog && (
-                <div className={`dialogContainer ${dialog.classes}`} onClick={clearDialog}>
+                <div className={cn(dialogVariants({ status: dialog?.variant }))} onClick={clearDialog}>
                     <div onClick={(e) => e.stopPropagation()}>
                         {dialog.title && <h4>{dialog.title}</h4>}
                         {dialog.message && <p>{dialog.message}</p>}

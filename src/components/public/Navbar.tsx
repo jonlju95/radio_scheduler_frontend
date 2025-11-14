@@ -1,7 +1,10 @@
 import {NavLink, useNavigate} from "react-router-dom";
 import {HiSun, HiUser} from "react-icons/hi2";
-import {useTheme} from "../contexts/UseTheme.tsx";
+import {useTheme} from "../../contexts/theme/UseTheme.tsx";
+import {cn} from "../../utils/cn.ts";
 
+const navLinkClasses = ["text-xs", "text-center", "px-3", "py-1", "me-8", "[&.active]:text-primary-800-200", "[&.active]:font-bold",
+    "[&.active]:bg-surface-200-800", "hover:text-primary-800-200", "hover:font-bold", "hover:bg-surface-200-800", "inline-block", "min-w-24", "rounded-md"]
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -12,18 +15,12 @@ const Navbar = () => {
             " border-b border-surface-200-800 shadow-md z-9999"}>
             <h6>RadioFM</h6>
             <div>
-                <NavLink className={"text-xs p-3 me-12 [&.active]:text-primary-800-200 [&.active]:font-bold" +
-                    " hover:text-primary-800-200 hover:font-bold"} to={""}>Home</NavLink>
-                <NavLink className={"text-xs p-3 me-12 [&.active]:text-primary-800-200 [&.active]:font-bold" +
-                    " hover:text-primary-800-200 hover:font-bold"} to={"about"}>About Us</NavLink>
-                <NavLink className={"text-xs p-3 me-12 [&.active]:text-primary-800-200 [&.active]:font-bold" +
-                    " hover:text-primary-800-200 hover:font-bold"} to={"podcasts"}>Podcasts</NavLink>
-                <NavLink className={"text-xs p-3 me-12 [&.active]:text-primary-800-200 [&.active]:font-bold" +
-                    " hover:text-primary-800-200 hover:font-bold"} to={"news"}>News</NavLink>
-                <NavLink className={"text-xs p-3 [&.active]:text-primary-800-200 [&.active]:font-bold" +
-                    " hover:text-primary-800-200 hover:font-bold"} to={"tableau"}>Tableau</NavLink>
+                <NavLink className={cn(navLinkClasses)} to={""}>Home</NavLink>
+                <NavLink className={cn(navLinkClasses)} to={"about"}>About Us</NavLink>
+                <NavLink className={cn(navLinkClasses)} to={"podcasts"}>Podcasts</NavLink>
+                <NavLink className={cn(navLinkClasses)} to={"news"}>News</NavLink>
+                <NavLink className={cn(navLinkClasses, "me-0")} to={"tableau"}>Tableau</NavLink>
             </div>
-
             <div className={"flex items-center justify-between"}>
                 <div onClick={() => navigate("/login")} className={"flex items-center cursor-pointer me-4"}>
                     <p className={"me-3 text-xs"}>Admin login</p>

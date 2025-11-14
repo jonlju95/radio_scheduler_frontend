@@ -2,11 +2,11 @@ import {useLocation} from "react-router-dom";
 import type {Tableau} from "../../../../models/Tableau.ts";
 import {useEffect, useState} from "react";
 import {apiClient} from "../../../../api/apiClient.ts";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
-import Button from "../../../../components/button/Button.tsx";
-import {useModal} from "../../../../contexts/UseModal.tsx";
-import TimeslotModal from "../../../../components/modals/TimeslotModal.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
+import Button from "../../../../components/shared/button/Button.tsx";
+import {useModal} from "../../../../contexts/modal/UseModal.tsx";
+import TimeslotModal from "../../../../components/private/modals/TimeslotModal.tsx";
 import type {Timeslot} from "../../../../models/Timeslot.ts";
 
 const TableauDetail = () => {

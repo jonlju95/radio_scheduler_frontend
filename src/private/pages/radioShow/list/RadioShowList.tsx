@@ -1,10 +1,10 @@
-import Table from "../../../../components/table/Table.tsx";
+import Table from "../../../../components/private/table/Table.tsx";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import type {RadioShow} from "../../../../models/RadioShow.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -31,7 +31,7 @@ const RadioShowList = () => {
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Shows"} navTarget={"/shows/new"} btnLabel={"New show"}/>
+            <ContentHeader title={"Shows"} navTarget={"/admin/shows/new"} btnLabel={"New show"}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
                     <Table headers={tableHeaders} data={radioShows}

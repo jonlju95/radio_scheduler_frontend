@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import Table from "../../../../components/table/Table.tsx";
+import Table from "../../../../components/private/table/Table.tsx";
 import {useNavigate} from "react-router-dom";
 import {apiClient} from "../../../../api/apiClient.ts";
 import type {Studio} from "../../../../models/Studio.ts";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -32,7 +32,7 @@ const StudioList = () => {
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Studios"} navTarget={"/studios/new"} btnLabel={"New studio"}/>
+            <ContentHeader title={"Studios"} navTarget={"/admin/studios/new"} btnLabel={"New studio"}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
                     <Table headers={tableHeaders} data={studios}

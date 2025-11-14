@@ -1,6 +1,6 @@
 import {type ButtonHTMLAttributes, type ReactNode} from "react";
 import {cva, type VariantProps} from "class-variance-authority";
-import {cn} from "../../utils/cn.ts";
+import {cn} from "../../../utils/cn.ts";
 
 const buttonVariants = cva(
     ["py-2", "px-4", "rounded-md", "font-medium", "shadow-md"],

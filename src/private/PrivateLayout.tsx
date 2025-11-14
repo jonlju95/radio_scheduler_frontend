@@ -1,7 +1,7 @@
-import Sidebar from "../components/sidebar/Sidebar.tsx";
+import Sidebar from "../components/private/sidebar/Sidebar.tsx";
 import {Outlet} from "react-router-dom";
-import {ModalProvider} from "../contexts/ModalContext.tsx";
-import {DialogProvider} from "../contexts/DialogContext.tsx";
+import {ModalProvider} from "../contexts/modal/ModalContext.tsx";
+import {DialogProvider} from "../contexts/dialog/DialogContext.tsx";
 
 
 const PrivateLayout = () => {

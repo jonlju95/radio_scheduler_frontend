@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import Button from "../button/Button.tsx";
+import Button from "../../shared/button/Button.tsx";
 import {HiChevronLeft} from "react-icons/hi2";
 
 const ContentHeader = ({title, navTarget, btnLabel, detailPage}: {

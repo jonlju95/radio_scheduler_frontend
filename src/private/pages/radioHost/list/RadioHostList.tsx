@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import type {RadioHost} from "../../../../models/RadioHost.ts";
 import {useNavigate} from "react-router-dom";
-import Table from "../../../../components/table/Table.tsx";
+import Table from "../../../../components/private/table/Table.tsx";
 import {apiClient} from "../../../../api/apiClient.ts";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -31,7 +31,7 @@ const RadioHostList = () => {
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Hosts"} navTarget={"/hosts/new"} btnLabel={"New host"}/>
+            <ContentHeader title={"Hosts"} navTarget={"/admin/hosts/new"} btnLabel={"New host"}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
                     <Table headers={tableHeaders} data={radioHosts}

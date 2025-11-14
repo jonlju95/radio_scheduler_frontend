@@ -1,9 +1,11 @@
 import {createContext, useContext} from "react";
 
+type dialogVariant = "success" | "warning" | "error" | undefined | null;
+
 export type DialogOptions = {
     title: string;
     message: string;
-    classes?: string;
+    variant?: dialogVariant;
 };
 
 export type DialogContextType = {

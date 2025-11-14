@@ -1,7 +1,6 @@
 import {type ReactNode, useRef, useState} from "react";
-import {ModalContext} from "./UseModal";
+import {ModalContext} from "./UseModal.tsx";
 import {HiXMark} from "react-icons/hi2";
-
 
 export const ModalProvider = ({children}: { children: ReactNode }) => {
     const [content, setContent] = useState<ReactNode | null>(null);

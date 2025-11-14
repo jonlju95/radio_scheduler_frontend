@@ -1,9 +1,9 @@
 import type {Tableau} from "../../../../models/Tableau.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
 import {useNavigate} from "react-router-dom";
-import DatePicker from "../../../../components/datePicker/DatePicker.tsx";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
+import DatePicker from "../../../../components/private/datePicker/DatePicker.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
 
 const TableauList = () => {
     const navigate = useNavigate();

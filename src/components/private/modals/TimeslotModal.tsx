@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react';
-import type {RadioShow} from "../../models/RadioShow.ts";
-import type {RadioHost} from "../../models/RadioHost.ts";
-import type {Studio} from "../../models/Studio.ts";
-import {apiClient} from "../../api/apiClient.ts";
-import DropdownField, {type Option} from "../DropdownField.tsx";
-import FormWrapper from "../FormWrapper.tsx";
-import type {Timeslot} from "../../models/Timeslot.ts";
-import {useModal} from "../../contexts/UseModal.tsx";
+import type {RadioShow} from "../../../models/RadioShow.ts";
+import type {RadioHost} from "../../../models/RadioHost.ts";
+import type {Studio} from "../../../models/Studio.ts";
+import {apiClient} from "../../../api/apiClient.ts";
+import DropdownField, {type Option} from "../../shared/DropdownField.tsx";
+import FormWrapper from "../../shared/FormWrapper.tsx";
+import type {Timeslot} from "../../../models/Timeslot.ts";
+import {useModal} from "../../../contexts/modal/UseModal.tsx";
 
 const TimeslotModal = ({timeslotId}: {
     timeslotId: string;

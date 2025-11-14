@@ -2,11 +2,11 @@ import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import type {Studio} from "../../../../models/Studio.ts";
 import {apiClient} from "../../../../api/apiClient.ts";
-import ContentHeader from "../../../../components/contentHeader/ContentHeader.tsx";
-import ContentBody from "../../../../components/contentBody/ContentBody.tsx";
-import {useDialog} from "../../../../contexts/UseDialog.tsx";
-import FormWrapper from "../../../../components/FormWrapper.tsx";
-import InputField from "../../../../components/InputField.tsx";
+import ContentHeader from "../../../../components/private/contentHeader/ContentHeader.tsx";
+import ContentBody from "../../../../components/private/contentBody/ContentBody.tsx";
+import {useDialog} from "../../../../contexts/dialog/UseDialog.tsx";
+import FormWrapper from "../../../../components/shared/FormWrapper.tsx";
+import InputField from "../../../../components/shared/InputField.tsx";
 
 const StudioDetail = () => {
     const {state} = useLocation();
@@ -52,7 +52,7 @@ const StudioDetail = () => {
                 triggerDialog({
                     title: "Warning",
                     message: "No changes detected",
-                    classes: "warning"
+                    variant: "warning"
                 });
                 return;
             }
@@ -65,7 +65,7 @@ const StudioDetail = () => {
                 triggerDialog({
                     title: "Success",
                     message: "Studio created",
-                    classes: "success"
+                    variant: "success"
                 });
             });
         } else {
@@ -75,7 +75,7 @@ const StudioDetail = () => {
                 triggerDialog({
                     title: "Success",
                     message: "Studio updated",
-                    classes: "success"
+                    variant: "success"
                 });
             });
         }

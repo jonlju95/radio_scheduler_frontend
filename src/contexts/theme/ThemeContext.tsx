@@ -1,5 +1,5 @@
 import {type ReactNode, useEffect, useState} from 'react';
-import {ThemeContext} from "./UseTheme";
+import {ThemeContext} from "./UseTheme.tsx";
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [darkTheme, setDarkTheme] = useState(false);
