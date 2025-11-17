@@ -12,8 +12,14 @@ export const PlayerControlsProvider = ({children}: { children: ReactNode; }) => 
         return visible;
     }
 
+    const hideControls = () => {
+        setVisible(false);
+        setCurrentShow("");
+        return visible;
+    }
+
     return (
-        <PlayerControlsContext.Provider value={{ showControls }}>
+        <PlayerControlsContext.Provider value={{ showControls, hideControls }}>
             {children}
             {visible && <PlayerControls currentShow={currentShow || "Music"}/>}
         </PlayerControlsContext.Provider>

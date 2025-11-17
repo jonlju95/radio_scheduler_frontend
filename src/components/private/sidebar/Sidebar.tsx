@@ -14,7 +14,7 @@ const Sidebar = () => {
 
     return (
         <aside className={"h-[100vh] w-60 fixed left-0 top-0 flex flex-col py-6 px-4 bg-surface-200-800" +
-            " text-surface-950-50"}>
+            " text-surface-950-50 z-9999"}>
             <div>
                 <h1 className={"h3 text-primary-700-300 text-center mb-16"}>RadioFM</h1>
             </div>

@@ -2,6 +2,7 @@ import {createContext, useContext} from 'react';
 
 type PlayerControlsType = {
     showControls: (currentShow: string) => boolean;
+    hideControls: () => boolean;
 }
 
 export const PlayerControlsContext = createContext<PlayerControlsType | undefined>(undefined);
