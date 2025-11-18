@@ -10,7 +10,8 @@ const PublicLayout = () => {
         <>
             <PlayerControlsProvider>
                 {!hideNavbar && <Navbar/>}
-                <main className={"grid grid-cols-12 grid-rows-auto gap-4 gap-y-0 h-[100vh] overflow-x-hidden"}>
+                <main id="scroll-container" className={"grid grid-cols-12 grid-rows-auto gap-4 gap-y-0 h-[100vh]" +
+                    " overflow-x-hidden min-h-screen transition-colors transition-background duration-300"}>
                     <Outlet/>
                 </main>
             </PlayerControlsProvider>

@@ -1,14 +1,17 @@
 import Button from "../../../components/shared/button/Button.tsx";
 import PodcastItem from "../../../components/public/PodcastItem.tsx";
-import NewsItem from "../../../components/public/NewsItem.tsx";
 import Footer from "../../../components/public/Footer.tsx";
 import {cn} from "../../../utils/cn.ts";
+import {usePlayerControls} from "../../../contexts/playerControls/UsePlayerControls.tsx";
+import CardContainer from "../../../components/public/CardContainer.tsx";
 
 const heroSectionClasses = ["col-span-full", "flex", "items-center", "min-h-[calc(100vh-4rem)]", "px-32", "mt-16", "bg-cover", "bg-center", "relative"];
 const statisticsSectionClasses = ["flex", "justify-between", "items-center", "bg-primary-900-100", "text-primary-50-950", "rounded-r-xl",
     "h-48", "w-2/3", "px-32", "absolute", "left-0", "top-[calc(100vh-10rem)]"];
 
 const Home = () => {
+    const {showControls} = usePlayerControls();
+
     return (
         <>
             <section className={cn(heroSectionClasses)}
@@ -64,18 +67,24 @@ const Home = () => {
                 " bg-surface-300-700 pt-16"}>
                 <h2 className={"mb-6"}>News</h2>
                 <div className={"flex flex-col"}>
-                    <NewsItem title={"Lorem ipsum"}
-                              description={"Lorem ipsum dolor sit amet consectetur. Elit sollicitudin convallis feugiat sagittis gravida integer a eget. Magna aliquam nisl mauris orci in."}
-                              imageSrc={"src/assets/image 4.webp"}
-                              imageAlt={"Podcast image"}/>
-                    <NewsItem title={"Lorem ipsum"}
-                              description={"Lorem ipsum dolor sit amet consectetur. Nisi cras arcu et pharetra egestas morbi fringilla maecenas pulvinar. Varius mi posuere leo convallis lobortis arcu tristique ac in."}
-                              imageSrc={"src/assets/image 1.webp"}
-                              imageAlt={"Podcast image"}/>
-                    <NewsItem title={"Lorem ipsum"}
-                              description={"Lorem ipsum dolor sit amet consectetur. Ut est suscipit integer aliquam faucibus amet sagittis dictum. Ornare id tellus nulla lectus orci in feugiat iaculis."}
-                              imageSrc={"src/assets/image 3.webp"}
-                              imageAlt={"Podcast image"}/>
+                    <CardContainer title={"Lorem ipsum"}
+                                   description={"Lorem ipsum dolor sit amet consectetur. Elit sollicitudin convallis feugiat sagittis gravida integer a eget. Magna aliquam nisl mauris orci in."}
+                                   imageSrc={"src/assets/image 4.webp"}
+                                   imageAlt={"Podcast image"}
+                                   showControls={showControls}
+                                   layout={"news"}/>
+                    <CardContainer title={"Lorem ipsum"}
+                                   description={"Lorem ipsum dolor sit amet consectetur. Nisi cras arcu et pharetra egestas morbi fringilla maecenas pulvinar. Varius mi posuere leo convallis lobortis arcu tristique ac in."}
+                                   imageSrc={"src/assets/image 1.webp"}
+                                   imageAlt={"Podcast image"}
+                                   showControls={showControls}
+                                   layout={"news"}/>
+                    <CardContainer title={"Lorem ipsum"}
+                                   description={"Lorem ipsum dolor sit amet consectetur. Ut est suscipit integer aliquam faucibus amet sagittis dictum. Ornare id tellus nulla lectus orci in feugiat iaculis."}
+                                   imageSrc={"src/assets/image 3.webp"}
+                                   imageAlt={"Podcast image"}
+                                   showControls={showControls}
+                                   layout={"news"}/>
                 </div>
             </section>
             <Footer/>

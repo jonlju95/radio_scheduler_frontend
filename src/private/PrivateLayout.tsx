@@ -12,7 +12,7 @@ const PrivateLayout = () => {
                 <ModalProvider>
                     <Sidebar/>
                     <UserButton/>
-                    <main className={"min-w-[calc(100vw-15rem)] h-[100vh] ml-60 pr-32 p-16 overflow-x-hidden"}>
+                    <main className={"min-w-[calc(100vw-15rem)] h-[100vh] ml-60 pr-32 p-16 overflow-x-hidden min-h-screen transition-colors transition-background duration-300"}>
                         <Outlet/>
                     </main>
                 </ModalProvider>

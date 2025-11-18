@@ -1,17 +1,40 @@
 import {HiBackward, HiForward, HiPause, HiPlay, HiSpeakerWave} from "react-icons/hi2";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {cn} from "../../utils/cn.ts";
 
 
 const PlayerControls = ({currentShow}: { currentShow: string }) => {
     const [playing, setPlaying] = useState<boolean>(false);
+    const [isAtBottom, setIsAtBottom] = useState<boolean>(false);
+
+    useEffect(() => {
+        const target = document.querySelector("#scroll-container");
+
+        if (!target) return;
+
+        const handleScroll = () => {
+            const scrollTop = target.scrollTop;
+            const visibleHeight = target.clientHeight;
+            const scrollHeight = target.scrollHeight;
+
+            // How far from bottom?
+            const distanceFromBottom = scrollHeight - (scrollTop + visibleHeight);
+
+            setIsAtBottom(distanceFromBottom < 96);
+        };
+
+        target.addEventListener("scroll", handleScroll);
+        return () => target.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const togglePlaying = () => {
         setPlaying(!playing);
     }
 
     return (
-        <div className={"absolute w-[80%] z-9999 bg-primary-200-800 border border-surface-200-800 px-6 py-3" +
-            " rounded-xl bottom-8 left-1/2 transform -translate-1/2"}>
+        <div className={cn("absolute w-[80%] z-9999 bg-primary-200-800 border border-surface-200-800 px-6 py-3" +
+            " rounded-xl left-1/2 transform -translate-x-1/2 transition-[bottom,transform] duration-75 ease-in-out",
+            isAtBottom ? "bottom-24 translate-y-0" : "bottom-6 translate-y-0")}>
             <div className={"flex items-center justify-between w-full mb-3"}>
                 <p className={"min-w-1/4"}>
                     <span className={"font-bold"}>Now playing: </span>

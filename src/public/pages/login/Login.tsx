@@ -2,12 +2,14 @@ import FormWrapper from "../../../components/shared/FormWrapper.tsx";
 import InputField from "../../../components/shared/InputField.tsx";
 import {useNavigate} from "react-router-dom";
 import {mockAuth} from "../../../auth/mockSessions.ts";
+import Button from "../../../components/shared/button/Button.tsx";
 
 
 const Login = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
+        console.log("Login");
         mockAuth.login("Admin", "admin");
         navigate("/admin/dashboard");
     }
@@ -17,9 +19,12 @@ const Login = () => {
             " shadow-md p-8 mt-32 ms-32"}>
             <h3 className={"mb-8 text-primary-700-300"}>RadioFM Login</h3>
             <FormWrapper onSubmit={handleLogin}>
-                <InputField name={"username"} label={"Username"}/>
-                <InputField name={"password"} label={"Password"} type={"password"}/>
+                <InputField name={"username"} label={"Username"} disabled={true}/>
+                <InputField name={"password"} label={"Password"} type={"password"} disabled={true}/>
             </FormWrapper>
+            <div className={"flex justify-end mt-12"}>
+                <Button onClickAction={handleLogin} btnLabel={"Mock-login"} />
+            </div>
         </div>
     );
 };

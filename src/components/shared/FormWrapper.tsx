@@ -25,7 +25,7 @@ const FormWrapper = <T extends FieldValues>({defaultValues, onSubmit, children}:
             <form onSubmit={handleSubmit(onSubmit)}>
                 {children}
                 <div className={"flex justify-end"}>
-                    <Button btnDisabled={!isDirty || !isValid}
+                    <Button disabled={!isDirty || !isValid}
                             btnLabel={"Submit"} btnType={"submit"}
                             btnClasses={"btn-primary"}/>
                 </div>
