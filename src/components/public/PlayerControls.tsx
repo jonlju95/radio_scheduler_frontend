@@ -60,11 +60,18 @@ const PlayerControls = ({currentShow}: { currentShow: string }) => {
                         " border-surface-100-900 rounded-3xl cursor-pointer shadow-sm p-1.5"}/>
                 </div>
             </div>
-            <div className={"w-full h-4 flex items-center"}>
+            <div className={"w-full h-4 flex justify-between items-center"}>
+                <div className={"flex w-20 me-4 justify-center items-center"}>
+                    <p>-- : --</p>
+                </div>
                 <input className={"w-full h-1.5 rounded-sm outline-none appearance-none bg-secondary-200-800"}
                        type={"range"} min={"1"} max={"100"} defaultValue={"33"}/>
+                <div className={"flex w-20 ms-4 bg-primary-400-600 text-surface-50-950 rounded-sm justify-center"}>
+                    <p className={"font-bold flex items-center"}><span>LIVE</span>
+                        <circle className={"bg-surface-50-950 block w-3 h-3 rounded-xl ms-2"}/>
+                    </p>
+                </div>
             </div>
-            {/*<progress className={"w-full h-1.5 rounded-sm"} max={"100"} value={"33"}>33%</progress>*/}
         </div>
     );
 };
