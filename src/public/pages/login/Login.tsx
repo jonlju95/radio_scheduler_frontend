@@ -2,8 +2,6 @@ import FormWrapper from "../../../components/shared/FormWrapper.tsx";
 import InputField from "../../../components/shared/InputField.tsx";
 import {useNavigate} from "react-router-dom";
 import {mockAuth} from "../../../auth/mockSessions.ts";
-import Button from "../../../components/shared/button/Button.tsx";
-
 
 const Login = () => {
     const navigate = useNavigate();
@@ -22,9 +20,6 @@ const Login = () => {
                 <InputField name={"username"} label={"Username"} disabled={true}/>
                 <InputField name={"password"} label={"Password"} type={"password"} disabled={true}/>
             </FormWrapper>
-            <div className={"flex justify-end mt-12"}>
-                <Button onClickAction={handleLogin} btnLabel={"Mock-login"} />
-            </div>
         </div>
     );
 };

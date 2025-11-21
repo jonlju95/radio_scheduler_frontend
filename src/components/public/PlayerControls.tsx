@@ -17,7 +17,6 @@ const PlayerControls = ({currentShow}: { currentShow: string }) => {
             const visibleHeight = target.clientHeight;
             const scrollHeight = target.scrollHeight;
 
-            // How far from bottom?
             const distanceFromBottom = scrollHeight - (scrollTop + visibleHeight);
 
             setIsAtBottom(distanceFromBottom < 96);

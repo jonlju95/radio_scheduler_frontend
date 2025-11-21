@@ -19,12 +19,13 @@ const Tooltip = ({children, content}: TooltipProps) => {
     }
 
     const renderContent = () => {
-        if(Array.isArray(content)) {
+        if (Array.isArray(content)) {
             return (
                 <ul className="flex flex-col w-full">
                     {content.map((item, i) => (
                         <li key={i}>
-                            <a href={item} className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm">
+                            <a href={item}
+                               className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm">
                                 {item}
                             </a>
                         </li>

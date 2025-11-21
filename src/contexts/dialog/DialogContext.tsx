@@ -1,5 +1,4 @@
 import {type ReactNode, useEffect, useState} from 'react';
-import "../DialogContext.css";
 import {DialogContext, type DialogOptions} from "./UseDialog.tsx";
 import {cn} from "../../utils/cn.ts";
 import {dialogVariants} from "./dialog.styles.ts";
