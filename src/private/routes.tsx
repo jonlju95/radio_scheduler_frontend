@@ -13,16 +13,16 @@ import StudioLayout from "./pages/studio/StudioLayout.tsx";
 import StudioList from "./pages/studio/list/StudioList.tsx";
 import StudioDetail from "./pages/studio/detail/StudioDetail.tsx";
 import Dashboard from "./pages/dashboard/Dashboard.tsx";
-import {mockAuth} from "../auth/mockSessions.ts";
+import UserInfo from "./pages/userInfo/UserInfo.tsx";
 
 export const privateRoutes: RouteObject = {
     path: "/admin",
     loader: async () => {
-        const adminUser = mockAuth.getCurrentUser();
-        if (!adminUser || adminUser.role !== "admin") {
+        const authToken = localStorage.getItem("authToken");
+        if (!authToken) {
             throw redirect("/login");
         }
-        return adminUser;
+        return null;
     },
     Component: PrivateLayout,
     children: [
@@ -48,7 +48,8 @@ export const privateRoutes: RouteObject = {
                 {index: true, Component: StudioList},
                 {path: ":id", Component: StudioDetail},
             ]
-        },
-
+        }, {
+            path: "settings", Component: UserInfo
+        }
     ]
 }

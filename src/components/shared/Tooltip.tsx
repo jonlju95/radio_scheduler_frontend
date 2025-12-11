@@ -1,7 +1,7 @@
 import {type ReactNode} from 'react';
-import {mockAuth} from "../../auth/mockSessions.ts";
 import {useNavigate} from "react-router-dom";
 import {HiArrowLeftStartOnRectangle} from "react-icons/hi2";
+import {useAuth} from "../../contexts/auth/UseAuth.tsx";
 
 type TooltipContent = string | string[];
 
@@ -11,10 +11,11 @@ type TooltipProps = {
 };
 
 const Tooltip = ({children, content}: TooltipProps) => {
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        mockAuth.logout("admin");
+        logout();
         navigate("/");
     }
 
@@ -24,7 +25,7 @@ const Tooltip = ({children, content}: TooltipProps) => {
                 <ul className="flex flex-col w-full">
                     {content.map((item, i) => (
                         <li key={i}>
-                            <a href={item}
+                            <a href={item.toLowerCase()}
                                className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm">
                                 {item}
                             </a>

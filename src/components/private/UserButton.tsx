@@ -7,7 +7,7 @@ const UserButton = ({username = "Admin Adminson"}: { username?: string }) => {
 
     return (
         <div className={"absolute w-full h-16 flex justify-end items-center pe-32 bg-surface-200-800"}>
-            <Tooltip content={[]}>
+            <Tooltip content={["Settings"]}>
                 <div
                     className={"flex items-center cursor-pointer"}>
                     <p className={"me-3 text-xs"}>{username}</p>
