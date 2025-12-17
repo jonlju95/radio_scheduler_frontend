@@ -12,7 +12,7 @@ const TableauList = () => {
         apiClient.get<Tableau>(`/tableaux/daily`, {date: String(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate())})
             .then(res => {
                 if (res.data) {
-                    navigate(`/tableau/${res.data.id}`, {state: {row: res.data}});
+                    navigate(`${res.data.id}`, {state: {row: res.data}});
                 }
             })
     })

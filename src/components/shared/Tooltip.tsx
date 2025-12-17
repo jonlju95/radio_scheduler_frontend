@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {HiArrowLeftStartOnRectangle} from "react-icons/hi2";
 import {useAuth} from "../../contexts/auth/UseAuth.tsx";
 
-type TooltipContent = string | string[];
+type TooltipContent = { href: string; label: string }[];
 
 type TooltipProps = {
     content: TooltipContent;
@@ -25,9 +25,9 @@ const Tooltip = ({children, content}: TooltipProps) => {
                 <ul className="flex flex-col w-full">
                     {content.map((item, i) => (
                         <li key={i}>
-                            <a href={item.toLowerCase()}
+                            <a href={item.href.toLowerCase()}
                                className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm">
-                                {item}
+                                {item.label}
                             </a>
                         </li>
                     ))}

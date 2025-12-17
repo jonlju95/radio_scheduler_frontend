@@ -1,4 +1,4 @@
-import type {Role} from "../Role.ts";
+import type {Role} from "./Role.ts";
 
 export interface User {
     id: string;

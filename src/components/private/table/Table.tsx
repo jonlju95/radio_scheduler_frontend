@@ -11,7 +11,7 @@ type TableProps<T extends object> = {
 
 function Table<T extends object>({headers, data, onRowClick}: TableProps<T>) {
     return (
-        <table className={"border-collapse w-full"}>
+        <table className={"border-collapse w-full h-fit"}>
             <thead className={"bg-primary-500 text-surface-50-950"}>
             <tr>
                 {headers.map((h) => (

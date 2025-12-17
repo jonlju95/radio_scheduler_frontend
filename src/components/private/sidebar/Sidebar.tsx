@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import {Fragment} from "react";
-import {HiCalendar, HiClock, HiCube, HiHome, HiMicrophone, HiUser} from "react-icons/hi2";
+import {HiCalendar, HiCube, HiHome, HiMicrophone, HiUser} from "react-icons/hi2";
 
 const Sidebar = () => {
     const links = [
@@ -9,7 +9,8 @@ const Sidebar = () => {
         {target: "shows", title: "Shows", icon: <HiMicrophone className={"me-4 text-tertiary-700-300"}/>},
         {target: "hosts", title: "Hosts", icon: <HiUser className={"me-4 text-tertiary-700-300"}/>},
         {target: "studios", title: "Studios", icon: <HiCube className={"me-4 text-tertiary-700-300"}/>},
-        {target: "timeslots", title: "Timeslot", icon: <HiClock className={"me-4 text-tertiary-700-300"}/>},
+        // {target: "timeslots", title: "Timeslot", icon: <HiClock className={"me-4 text-tertiary-700-300"}/>},
+        {target: "users", title: "Users", icon: <HiUser className={"me-4 text-tertiary-700-300"}/>},
     ]
 
     return (
@@ -23,7 +24,12 @@ const Sidebar = () => {
                         <Fragment key={index}>
                             {index === 2 && (
                                 <li className={"mb-4 mt-12"}>
-                                    <h5>Globals</h5>
+                                    <h5>Radio objects</h5>
+                                </li>
+                            )}
+                            {index === links.length-1 && (
+                                <li className={"mb-4 mt-12"}>
+                                    <h5>Admin</h5>
                                 </li>
                             )}
                             <li className={"mb-4"}>

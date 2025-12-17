@@ -13,10 +13,17 @@ export const AuthProvider = ({children}: { children: ReactNode }) => {
     });
 
     const login = (data: { user: User | null, token: string }) => {
-        setUser(user);
-        setToken(token);
+        if (!data.user) return;
 
-        localStorage.setItem("authUser", JSON.stringify(data.user));
+        const normalizedUser = {
+            ...data.user,
+            roles: data.user.roles.map((ur: any) => ur.role)
+        };
+
+        setUser(normalizedUser);
+        setToken(data.token);
+
+        localStorage.setItem("authUser", JSON.stringify(normalizedUser));
         localStorage.setItem("authToken", data.token);
     }
 

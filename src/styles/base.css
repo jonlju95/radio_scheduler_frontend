@@ -33,6 +33,6 @@
     }
 
     .content {
-        @apply flex flex-col bg-surface-100-900 h-fit min-h-full rounded-xl p-8 shadow-lg border border-surface-200-800;
+        @apply grid grid-rows-[6rem] bg-surface-100-900 h-fit min-h-full rounded-xl p-8 shadow-lg border border-surface-200-800;
     }
 }

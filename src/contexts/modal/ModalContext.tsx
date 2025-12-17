@@ -26,7 +26,7 @@ export const ModalProvider = ({children}: { children: ReactNode }) => {
             {children}
             {content && (
                 <div className="fixed inset-0 flex items-center justify-center bg-surface-900/50">
-                    <div className="min-w-1/2 min-h-3/4 bg-surface-100-900 p-8 rounded shadow-lg relative">
+                    <div className="grid grid-rows-[5rem] min-w-1/2 min-h-3/4 bg-surface-100-900 p-8 rounded shadow-lg relative">
                         {content}
                         <div
                             className={"absolute top-2 right-2 text-surface-900-100"}
