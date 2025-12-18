@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
-import {publicRoutes} from "./public/routes.tsx";
-import {privateRoutes} from "./private/routes.tsx";
+import {publicRoutes} from "./routes/public.routes.tsx";
+import {privateRoutes} from "./routes/private.routes.tsx";
 
 export const router = createBrowserRouter([
     publicRoutes,

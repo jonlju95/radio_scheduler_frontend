@@ -1,5 +1,5 @@
 import http from "./http.ts";
-import type {ApiResponse} from "../models/api/ApiResponse.ts";
+import type {ApiResponse} from "./models/ApiResponse.ts";
 
 export const apiClient = {
     get: async <T>(url: string, params?: object) => {
