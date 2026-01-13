@@ -2,11 +2,12 @@ import {useNavigate} from "react-router-dom";
 import Button from "./Button.tsx";
 import {HiChevronLeft} from "react-icons/hi2";
 
-const ContentHeader = ({title, navTarget, btnLabel, detailPage}: {
+const ContentHeader = ({title, navTarget, btnLabel, detailPage, state}: {
     title: string;
     navTarget?: string;
     btnLabel?: string;
     detailPage?: boolean | false;
+    state?: object;
 }) => {
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const ContentHeader = ({title, navTarget, btnLabel, detailPage}: {
                 <h3>{title}</h3>
                 {navTarget ? (<Button btnLabel={btnLabel}
                                       btnClasses={"button btn-primary"}
-                                      onClickAction={() => navigate(navTarget, {state: {row: {id: "new"}}})}>
+                                      onClickAction={() => navigate(navTarget, state)}>
                 </Button>) : null}
             </>
             }
