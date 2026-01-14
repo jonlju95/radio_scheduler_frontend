@@ -1,11 +1,11 @@
 import type {Timeslot} from "../models/Timeslot.ts";
 import {apiClient} from "../../../api/apiClient.ts";
-import type {CreateTimeslotFormType} from "../models/CreateTimeslotFormType.ts";
+import type {TimeslotFormType} from "../models/TimeslotFormType.ts";
 import type {Tableau} from "../models/Tableau.ts";
 import {mapCreateFormToTimeslot} from "../mappers/timeslot.mapper.ts";
 
 class TimeslotService {
-    async createTimeslot(formData: CreateTimeslotFormType, tableau: Tableau): Promise<Timeslot> {
+    async createTimeslot(formData: TimeslotFormType, tableau: Tableau): Promise<Timeslot> {
         const timeslot = mapCreateFormToTimeslot(formData, tableau);
 
         const {data} = await apiClient.post<Timeslot>(`/timeslots`, timeslot);
@@ -13,7 +13,7 @@ class TimeslotService {
         return data;
     }
 
-    async updateTimeslot(id: string, timeslotData: CreateTimeslotFormType, tableau: Tableau): Promise<Timeslot> {
+    async updateTimeslot(id: string, timeslotData: TimeslotFormType, tableau: Tableau): Promise<Timeslot> {
         const timeslot = mapCreateFormToTimeslot(timeslotData, tableau);
 
         console.log(timeslot);

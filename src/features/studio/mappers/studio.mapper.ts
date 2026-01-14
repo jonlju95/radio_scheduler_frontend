@@ -1,8 +1,8 @@
-import type {CreateStudioFormType} from "../models/CreateStudioFormType.ts";
+import type {StudioFormType} from "../models/StudioFormType.ts";
 import type {Studio} from "../models/Studio.ts";
 import type {DefaultValues} from "react-hook-form";
 
-export const mapStudioToForm = (studio: Studio): DefaultValues<CreateStudioFormType> => {
+export const mapStudioToForm = (studio: Studio): DefaultValues<StudioFormType> => {
     return {
         name: studio?.name,
         bookingPrice: studio?.bookingPrice,
@@ -10,8 +10,8 @@ export const mapStudioToForm = (studio: Studio): DefaultValues<CreateStudioFormT
     }
 }
 
-export const mapCreateFormToStudio = (
-    formData: CreateStudioFormType
+export const mapFormToStudio = (
+    formData: StudioFormType
 ): Partial<Studio> => {
     return {
         name: formData.name,

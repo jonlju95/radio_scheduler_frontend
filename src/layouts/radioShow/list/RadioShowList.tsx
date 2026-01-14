@@ -1,10 +1,7 @@
-import Table from "../../../shared/components/Table.tsx";
-import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import type {RadioShow} from "../../../features/radioShow/models/RadioShow.ts";
-import {apiClient} from "../../../api/apiClient.ts";
 import ContentHeader from "../../../shared/components/ContentHeader.tsx";
+import {useRadioShowList} from "../../../features/radioShow/hooks/useRadioShowList.tsx";
 import ContentBody from "../../../shared/components/ContentBody.tsx";
+import Table from "../../../shared/components/Table.tsx";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -13,29 +10,16 @@ const tableHeaders = [
 ] as const;
 
 const RadioShowList = () => {
-    const [radioShows, setRadioShows] = useState<RadioShow[]>([]);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const getRadioShows = () => {
-            apiClient.get<RadioShow[]>("/radioShows")
-                .then((response) => {
-                    setRadioShows(response.data);
-                    setLoading(false);
-                });
-        }
-        getRadioShows();
-    }, []);
-
+    const {shows, loading, navigateToShow} = useRadioShowList();
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Shows"} navTarget={"/admin/shows/new"} btnLabel={"New show"}/>
+            <ContentHeader title={"Shows"} navTarget={"/admin/shows/new"} btnLabel={"New show"}
+                           state={{state: {radioShow: {id: "new"}}}}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
-                    <Table headers={tableHeaders} data={radioShows}
-                           onRowClick={(row) => navigate(`/shows/${row.id}`, {state: {row}})}></Table>
+                    <Table headers={tableHeaders} data={shows}
+                           onRowClick={(radioShow) => navigateToShow(radioShow)}></Table>
                 )}
             </ContentBody>
         </div>

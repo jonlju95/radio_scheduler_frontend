@@ -2,11 +2,11 @@ import {useLocation} from "react-router-dom";
 import type {Studio} from "../models/Studio.ts";
 import {useEffect, useState} from "react";
 import {studioService} from "../services/studio.service.ts";
-import type {CreateStudioFormType} from "../models/CreateStudioFormType.ts";
+import type {StudioFormType} from "../models/StudioFormType.ts";
 import {useDialog} from "../../../shared/hooks/useDialog.ts";
 
-export const useStudio = () => {
-    const { state } = useLocation();
+export const useStudioDetail = () => {
+    const {state} = useLocation();
     const isNew = state.studio.id === "new";
     const {triggerDialog} = useDialog();
 
@@ -32,7 +32,7 @@ export const useStudio = () => {
             })
     }, [isNew, state.studio.id]);
 
-    const saveStudio = async (formData: CreateStudioFormType) => {
+    const saveStudio = async (formData: StudioFormType) => {
         await studioService.createStudio(formData).then((createdStudio: Studio) => {
             setStudio(createdStudio);
             triggerDialog({
@@ -49,8 +49,8 @@ export const useStudio = () => {
         });
     }
 
-    const updateStudio = async (formData: CreateStudioFormType) => {
-        await studioService.updateStudio(formData).then((updatedStudio: Studio) => {
+    const updateStudio = async (formData: StudioFormType) => {
+        await studioService.updateStudio(studio.id, formData).then((updatedStudio: Studio) => {
             setStudio(updatedStudio);
             triggerDialog({
                 title: "Success",
@@ -66,5 +66,5 @@ export const useStudio = () => {
         })
     }
 
-    return { studio, loading, isNew, saveStudio, updateStudio };
+    return {studio, loading, isNew, saveStudio, updateStudio};
 }

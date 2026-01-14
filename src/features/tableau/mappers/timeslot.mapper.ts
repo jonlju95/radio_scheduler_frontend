@@ -1,5 +1,5 @@
 import type {DefaultValues} from "react-hook-form";
-import type {CreateTimeslotFormType} from "../models/CreateTimeslotFormType.ts";
+import type {TimeslotFormType} from "../models/TimeslotFormType.ts";
 import type {Timeslot} from "../models/Timeslot.ts";
 import type {Tableau} from "../models/Tableau.ts";
 
@@ -19,7 +19,7 @@ export const toDateTime = (
 };
 
 export const mapTimeslotToForm = (
-    timeslot: Timeslot): DefaultValues<CreateTimeslotFormType> => {
+    timeslot: Timeslot): DefaultValues<TimeslotFormType> => {
     const guests: {
         radioHostId: string
     }[] = timeslot.radioHosts.length > 1 ? [{radioHostId: timeslot.radioHosts[1]?.id}] : [];
@@ -35,7 +35,7 @@ export const mapTimeslotToForm = (
 };
 
 export const mapCreateFormToTimeslot = (
-    form: CreateTimeslotFormType,
+    form: TimeslotFormType,
     tableau: Tableau
 ): Partial<Timeslot> => {
     const radioHostIds = Array.from(new Set([

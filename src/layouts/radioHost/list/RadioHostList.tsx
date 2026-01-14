@@ -1,10 +1,7 @@
-import {useEffect, useState} from "react";
-import type {RadioHost} from "../../../features/radioHost/models/RadioHost.ts";
-import {useNavigate} from "react-router-dom";
 import Table from "../../../shared/components/Table.tsx";
-import {apiClient} from "../../../api/apiClient.ts";
 import ContentHeader from "../../../shared/components/ContentHeader.tsx";
 import ContentBody from "../../../shared/components/ContentBody.tsx";
+import {useRadioHostList} from "../../../features/radioHost/hooks/useRadioHostList.ts";
 
 const tableHeaders = [
     {key: "id", label: "Id"},
@@ -14,28 +11,16 @@ const tableHeaders = [
 ] as const;
 
 const RadioHostList = () => {
-    const [radioHosts, setRadioHosts] = useState<RadioHost[]>([]);
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const getRadioHosts = () => {
-            apiClient.get<RadioHost[]>(`/radioHosts`)
-                .then((response) => {
-                    setRadioHosts(response.data);
-                    setLoading(false);
-                });
-        }
-        getRadioHosts();
-    }, []);
+    const {hosts, loading, navigateToHost} = useRadioHostList();
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Hosts"} navTarget={"/admin/hosts/new"} btnLabel={"New host"}/>
+            <ContentHeader title={"Hosts"} navTarget={"/admin/hosts/new"} btnLabel={"New host"}
+                           state={{state: {radioHost: {id: "new"}}}}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
-                    <Table headers={tableHeaders} data={radioHosts}
-                           onRowClick={(row) => navigate(`/hosts/${row.id}`, {state: {row}})}></Table>
+                    <Table headers={tableHeaders} data={hosts}
+                           onRowClick={(radioHost) => navigateToHost(radioHost)}></Table>
                 )}
             </ContentBody>
         </div>

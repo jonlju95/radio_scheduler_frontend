@@ -5,7 +5,7 @@ import type {Timeslot} from "../models/Timeslot.ts";
 import {tableauService} from "../services/tableau.service.ts";
 import {timeslotService} from "../services/timeslot.service.ts";
 import {useDialog} from "../../../shared/hooks/useDialog.ts";
-import type {CreateTimeslotFormType} from "../models/CreateTimeslotFormType.ts";
+import type {TimeslotFormType} from "../models/TimeslotFormType.ts";
 
 export const useTableau = () => {
     const { state } = useLocation();
@@ -33,7 +33,7 @@ export const useTableau = () => {
             });
     }, [isNew, state.row.id]);
 
-    const addTimeslot = async (formData: CreateTimeslotFormType) => {
+    const addTimeslot = async (formData: TimeslotFormType) => {
         await timeslotService.createTimeslot(formData, tableau).then((createdTimeslot) => {
             setTableau(prev => ({
                 ...prev,

@@ -1,6 +1,6 @@
 import InputField from "../../../shared/components/InputField.tsx";
 import DropdownField, {type Option} from "../../../shared/components/DropdownField.tsx";
-import type {CreateTimeslotFormType} from "../models/CreateTimeslotFormType.ts";
+import type {TimeslotFormType} from "../models/TimeslotFormType.ts";
 import {useFieldArray, useFormContext} from "react-hook-form";
 import Button from "../../../shared/components/Button.tsx";
 
@@ -11,8 +11,8 @@ interface Props {
     guests?: Option[];
 }
 
-const CreateTimeslotFormFields = ({hosts, shows, studios, guests}: Props) => {
-    const {control} = useFormContext<CreateTimeslotFormType>();
+const TimeslotFormFields = ({hosts, shows, studios, guests}: Props) => {
+    const {control} = useFormContext<TimeslotFormType>();
 
     const {fields, append, remove} = useFieldArray({
         control,
@@ -45,4 +45,4 @@ const CreateTimeslotFormFields = ({hosts, shows, studios, guests}: Props) => {
     );
 };
 
-export default CreateTimeslotFormFields;
+export default TimeslotFormFields;

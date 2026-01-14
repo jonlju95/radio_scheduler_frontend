@@ -6,7 +6,7 @@ import {useModal} from "../../../shared/hooks/useModal.ts";
 import {useTimeslotDropdownOptions} from "../../../features/tableau/hooks/useTimeslotDropdownOptions.ts";
 import TimeslotList from "../../../features/tableau/components/TimeslotList.tsx";
 import {useTableau} from "../../../features/tableau/hooks/useTableau.ts";
-import CreateTimeslotForm from "../../../features/tableau/components/CreateTimeslotForm.tsx";
+import TimeslotForm from "../../../features/tableau/components/TimeslotForm.tsx";
 
 const TableauDetail = () => {
     const {tableau, isNew, loading, addTimeslot, updateTimeslot} = useTableau();
@@ -39,7 +39,7 @@ const TableauDetail = () => {
                 {loading ? <div>Loading...</div> : (
                     <div className={"flex w-full h-full justify-between gap-x-4"}>
                         <div className={"min-w-1/3"}>
-                            <CreateTimeslotForm
+                            <TimeslotForm
                                 hosts={hosts} shows={shows} studios={studios}
                                 onSubmit={addTimeslot}
                             />

@@ -1,7 +1,7 @@
 import {apiClient} from "../../../api/apiClient.ts";
 import type {Studio} from "../models/Studio.ts";
-import type {CreateStudioFormType} from "../models/CreateStudioFormType.ts";
-import {mapCreateFormToStudio} from "../mappers/studio.mapper.ts";
+import type {StudioFormType} from "../models/StudioFormType.ts";
+import {mapFormToStudio} from "../mappers/studio.mapper.ts";
 
 class StudioService {
     async getStudios(): Promise<Studio[]> {
@@ -16,18 +16,18 @@ class StudioService {
         return data;
     }
 
-    async createStudio(formData: CreateStudioFormType): Promise<Studio> {
-        const studio = mapCreateFormToStudio(formData);
+    async createStudio(formData: StudioFormType): Promise<Studio> {
+        const studio = mapFormToStudio(formData);
 
         const {data} = await apiClient.post<Studio>(`/studios`, studio);
 
         return data;
     }
 
-    async updateStudio(formData: CreateStudioFormType): Promise<Studio> {
-        const studio = mapCreateFormToStudio(formData);
+    async updateStudio(id: string, formData: StudioFormType): Promise<Studio> {
+        const studio = mapFormToStudio(formData);
 
-        const {data} = await apiClient.put<Studio>(`/studios`, studio);
+        const {data} = await apiClient.put<Studio>(`/studios/${id}`, studio);
 
         return data;
     }

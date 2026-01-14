@@ -1,4 +1,4 @@
-export type CreateTimeslotFormType = {
+export type TimeslotFormType = {
     startTime: string;
     endTime: string;
     radioHostId: string;
