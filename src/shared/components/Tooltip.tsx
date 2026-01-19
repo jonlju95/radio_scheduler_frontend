@@ -11,7 +11,7 @@ type TooltipProps = {
 };
 
 const Tooltip = ({children, content}: TooltipProps) => {
-    const { logout } = useAuth();
+    const {logout} = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -25,10 +25,10 @@ const Tooltip = ({children, content}: TooltipProps) => {
                 <ul className="flex flex-col w-full">
                     {content.map((item, i) => (
                         <li key={i}>
-                            <a href={item.href.toLowerCase()}
-                               className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm">
+                            <span onClick={() => navigate(item.href.toLowerCase())}
+                                  className="p-2 inline-block w-full hover:bg-secondary-300-700 hover:font-bold rounded-sm cursor-pointer">
                                 {item.label}
-                            </a>
+                            </span>
                         </li>
                     ))}
                     <li className={"p-2 w-full hover:font-bold rounded-sm" +

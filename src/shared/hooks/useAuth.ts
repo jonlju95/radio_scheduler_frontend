@@ -2,14 +2,14 @@ import type {User} from "../../features/auth/models/User.ts";
 import {createContext, useContext} from "react";
 
 export interface AuthState {
-    user: User | null;
+    user: User;
     token: string | null;
 }
 
 export interface AuthContextValue extends AuthState {
-    login: (data: { user: User | null, token: string }) => void;
+    login: (data: { user: User, token: string }) => void;
     logout: () => void;
-    setUser: (user: User | null) => void;
+    setUser: (user: User) => void;
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);

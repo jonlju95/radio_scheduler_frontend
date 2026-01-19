@@ -1,40 +1,25 @@
-import type {User} from "../../../features/auth/models/User.ts";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {apiClient} from "../../../api/apiClient.ts";
 import ContentHeader from "../../../shared/components/ContentHeader.tsx";
 import ContentBody from "../../../shared/components/ContentBody.tsx";
 import Table from "../../../shared/components/Table.tsx";
+import {useUserInfoList} from "../../../features/userInfo/hooks/useUserInfoList.ts";
 
 const tableHeaders = [
-    {key: "username", label: "Username" },
-    {key: "firstName", label: "First name" },
-    {key: "lastName", label: "Last name" }
+    {key: "username", label: "Username"},
+    {key: "firstName", label: "First name"},
+    {key: "lastName", label: "Last name"}
 ] as const;
 
 const UserInfoList = () => {
-    const [users, setUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const getUsers = () => {
-            apiClient.get<User[]>("/users")
-                .then(response => {
-                    setUsers(response.data);
-                    setLoading(false);
-                })
-        }
-        getUsers();
-    }, []);
+    const {users, loading, navigateToUser} = useUserInfoList();
 
     return (
         <div className={"content"}>
-            <ContentHeader title={"Users"} navTarget={"/admin/users/new"} btnLabel={"New user"}/>
+            <ContentHeader title={"Users"} navTarget={"/admin/users/new"} btnLabel={"New user"}
+                           state={{state: {user: {id: "new"}}}}/>
             <ContentBody>
                 {loading ? (<div>Loading...</div>) : (
                     <Table headers={tableHeaders} data={users}
-                           onRowClick={(row) => navigate(`/admin/users/${row.id}`, {state: {row}})}></Table>
+                           onRowClick={(user) => navigateToUser(user)}></Table>
                 )}
             </ContentBody>
         </div>
