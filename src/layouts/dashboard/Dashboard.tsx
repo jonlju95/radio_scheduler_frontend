@@ -17,7 +17,7 @@ const Dashboard = () => {
                     <div className={"col-span-4 bg-secondary-300-700 rounded-xl p-4 h-48"}>
                         <p>Dashboard content</p>
                     </div>
-                    <div className={"col-span-8 bg-secondary-300-700 rounded-xl p-4 h-[30rem]"}>
+                    <div className={"col-span-8 bg-secondary-300-700 rounded-xl p-4 h-120"}>
                         <p>Bar chart container</p>
                     </div>
                     <div className={"col-span-4 bg-secondary-300-700 rounded-xl p-4"}>
