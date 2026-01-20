@@ -19,8 +19,12 @@ const RadioShowForm = ({radioShow, onSubmit}: Props) => {
     return (
         <FormWrapper defaultValues={defaultValues}
                      onSubmit={onSubmit} submitButtonText={"Save radio show"}>
-            <InputField name={"title"} label={"Title"} required/>
-            <InputField name={"durationMin"} label={"Duration (min)"} required/>
+            <section className={"grid w-1/4 gap-x-4 h-full mb-4"}>
+                <div className={"flex flex-col gap-y-6 h-full"}>
+                    <InputField name={"title"} label={"Title"} required/>
+                    <InputField name={"durationMin"} label={"Duration (min)"} required/>
+                </div>
+            </section>
         </FormWrapper>
     );
 };

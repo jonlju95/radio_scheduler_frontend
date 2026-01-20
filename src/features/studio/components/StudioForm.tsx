@@ -19,9 +19,13 @@ const StudioForm = ({studio, onSubmit}: Props) => {
     return (
         <FormWrapper<StudioFormType> defaultValues={defaultValues}
                                      onSubmit={onSubmit} submitButtonText={"Save studio"}>
-            <InputField name={"name"} label={"Studio name"} required/>
-            <InputField type={"number"} name={"bookingPrice"} label={"Booking price"} required/>
-            <InputField type={"number"} name={"capacity"} label={"Capacity"} required/>
+            <section className={"grid w-1/4 gap-x-4 h-full mb-4"}>
+                <div className={"flex flex-col gap-y-6 h-full"}>
+                    <InputField name={"name"} label={"Studio name"} required/>
+                    <InputField type={"number"} name={"bookingPrice"} label={"Booking price"} required/>
+                    <InputField type={"number"} name={"capacity"} label={"Capacity"} required/>
+                </div>
+            </section>
         </FormWrapper>
     );
 };

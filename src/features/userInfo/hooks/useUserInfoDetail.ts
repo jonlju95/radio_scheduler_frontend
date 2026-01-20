@@ -41,7 +41,7 @@ export const useUserInfoDetail = () => {
             setLoading(false);
             return;
         } else {
-            userInfoService.getUser(user.id).then(user => {
+            userInfoService.getUser(state?.user?.id).then(user => {
                 setUserForm(user);
                 setLoading(false);
             })

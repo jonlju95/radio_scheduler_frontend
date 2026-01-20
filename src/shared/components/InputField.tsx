@@ -18,9 +18,10 @@ const InputField = <T extends FieldValues>({name, label, type = "text", required
             <input id={name}
                    type={type}
                    {...register(name, {required})} {...props}
-                   className={`input h-[2.5rem] bg-surface-50-950 text-surface-950-50 font-normal base-font-size ${error ? 'border-error-500' : ''}`}/>
+                   className={`input h-10 bg-surface-50-950 text-surface-950-50 font-normal base-font-size ${error ? 'border-error-500' : ''}`}/>
         </label>
-            {error && <p className={"text-error-500"}>{error}</p>}</>
+            {error && <p className={"text-error-500"}>{error}</p>}
+        </>
     );
 };
 

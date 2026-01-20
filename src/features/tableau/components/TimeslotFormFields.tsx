@@ -20,13 +20,12 @@ const TimeslotFormFields = ({hosts, shows, studios, guests}: Props) => {
     });
 
     return (
-        <div>
+        <div className={"mb-4"}>
             <InputField type={"time"} name={"startTime"} label={"Start time"} required/>
             <InputField type={"time"} name={"endTime"} label={"End time"} required/>
-            <DropdownField name={"radioHostId"} label={"Host"} options={hosts}/>
             <DropdownField name={"radioShowId"} label={"Show"} options={shows}/>
             <DropdownField name={"studioId"} label={"Studio"} options={studios}/>
-
+            <DropdownField name={"radioHostId"} label={"Host"} options={hosts}/>
             {fields.map((field, i) => (
                 <>
                     <DropdownField key={field.id} name={`guests.${i}.radioHostId`} label={`Guest`}

@@ -5,6 +5,7 @@ import {useAuth} from "../../shared/hooks/useAuth.ts";
 import {apiClient} from "../../api/apiClient.ts";
 import type {LoginRequest} from "../../features/auth/models/LoginRequest.ts";
 import type {User} from "../../features/auth/models/User.ts";
+import PasswordField from "../../shared/components/PasswordField.tsx";
 
 interface LoginResponse {
     token: string;
@@ -16,8 +17,8 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleLogin = (data: LoginRequest) => {
-        apiClient.post<LoginResponse>("/auth/login", data).then(async (r) => {
-            login(r.data);
+        apiClient.post<object>("/auth/login", data).then(async (r) => {
+            login(r.data as LoginResponse);
             navigate("/admin/dashboard");
         })
     }
@@ -29,7 +30,7 @@ const Login = () => {
             <FormWrapper<LoginRequest> onSubmit={handleLogin}>
                 <div>
                     <InputField name={"username"} label={"Username"}/>
-                    <InputField name={"password"} label={"Password"} type={"password"}/>
+                    <PasswordField name={"password"} label={"Password"}/>
                     <div className={"bg-primary-50-950 rounded-xl p-6 mt-12"}>
                         <p className={"flex flex-col"}>
                             <span className={"font-bold"}>For testing purposes:</span>

@@ -9,7 +9,12 @@ type FormWrapperProps<T extends FieldValues> = {
     submitButtonText?: string;
 }
 
-const FormWrapper = <T extends FieldValues>({defaultValues, onSubmit, children, submitButtonText = "Submit"}: FormWrapperProps<T>) => {
+const FormWrapper = <T extends FieldValues>({
+    defaultValues,
+    onSubmit,
+    children,
+    submitButtonText = "Submit"
+}: FormWrapperProps<T>) => {
     const methods = useForm<T>({
         defaultValues: defaultValues as DefaultValues<T>,
         mode: "onChange",
@@ -18,13 +23,15 @@ const FormWrapper = <T extends FieldValues>({defaultValues, onSubmit, children, 
 
     const {
         handleSubmit,
-        formState: { isDirty, isValid },
+        formState: {isDirty, isValid},
     } = methods;
 
     return (
         <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)} className={"flex flex-col justify-between h-full"}>
-                {children}
+            <form onSubmit={handleSubmit(onSubmit)} className={"flex flex-col justify-between w-full h-full"}>
+                <div className={"flex flex-col gap-y-6 h-full"}>
+                    {children}
+                </div>
                 <div className={"flex justify-end"}>
                     <Button disabled={!isDirty || !isValid}
                             btnLabel={submitButtonText} btnType={"submit"}

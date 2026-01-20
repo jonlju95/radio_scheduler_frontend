@@ -24,8 +24,6 @@ const TimeslotModal = ({timeslotEdit, tableau}: {
 
     const {hosts, shows, studios, loading} = useTimeslotDropdownOptions();
 
-    console.log("TimeslotModal", defaultValues);
-
     const updateTimeslot = async (formData: TimeslotFormType) => {
         await timeslotService.updateTimeslot(timeslotEdit.id, formData, tableau).then(updatedTimeslot => {
             triggerDialog({

@@ -20,9 +20,13 @@ const RadioHostForm = ({radioHost, onSubmit}: Props) => {
     return (
         <FormWrapper defaultValues={defaultValues}
                      onSubmit={onSubmit} submitButtonText={"Save radio host"}>
-            <InputField name={"firstName"} label={"First name"}/>
-            <InputField name={"lastName"} label={"Last name"}/>
-            <ToggleField round={true} name={"isGuest"} label={"Is guest"}/>
+            <section className={"grid w-1/4 gap-x-4 h-full mb-4"}>
+                <div className={"flex flex-col gap-y-6 h-full"}>
+                    <InputField name={"firstName"} label={"First name"}/>
+                    <InputField name={"lastName"} label={"Last name"}/>
+                    <ToggleField round={true} name={"isGuest"} label={"Is guest"}/>
+                </div>
+            </section>
         </FormWrapper>
     );
 };
